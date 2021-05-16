@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Stepper } from "./Stepper";
-import { Education, Experience, PersonalDetails } from "./Forms";
+import { Stepper } from "./Components/Stepper";
+import { Education, Experience, PersonalDetails } from "./Components/Forms";
 import { Button, Card, Col, Row } from "react-bootstrap";
 
 function App() {
