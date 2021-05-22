@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 export function WizardStyled() {
   const Container = styled.div`
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 35rem;
   `;
 
   const Button = styled.button`
@@ -14,6 +14,7 @@ export function WizardStyled() {
     height: 50px;
     text-transform: uppercase;
     margin-bottom: 5px;
+    color: white;
   `;
 
   return {

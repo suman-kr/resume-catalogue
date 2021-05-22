@@ -11,6 +11,7 @@ export const PersonalDetails: React.FC = (props: any) => {
             <FormControl
               placeholder={field.placeholder}
               aria-label={field.placeholder}
+              name={field.name}
             />
           </Col>
         );

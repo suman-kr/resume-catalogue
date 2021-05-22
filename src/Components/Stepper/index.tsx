@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Col } from "react-bootstrap";
+import { Card, Col, Row } from "react-bootstrap";
 
 export class Stepper extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -17,7 +17,7 @@ export class Stepper extends React.Component<Props, State> {
     return (
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         {this.props.steps.map((step, index) => (
-          <div>
+          <Row className="m-0">
             <Col
               style={{
                 display: "flex",
@@ -50,7 +50,7 @@ export class Stepper extends React.Component<Props, State> {
                 }}
               />
             </Col>
-          </div>
+          </Row>
         ))}
       </div>
     );

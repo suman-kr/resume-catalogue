@@ -1,33 +1,34 @@
 import React from "react";
-import { Row, Col, FormControl } from "react-bootstrap";
+import { Row, Col, FormControl, Button } from "react-bootstrap";
+import { workExperience } from "../../constants/FormConst";
 export const Experience: React.FC = (props: any) => {
   return (
     <>
+      <Button style={{ width: "3em", height: "3em", borderRadius: "50%" }}>
+        Add
+      </Button>
       <Row>
-        <Col md={6} style={{ margin: "10px 0px 10px 0px" }}>
-          <FormControl placeholder="Company Name" aria-label="Name" />
-        </Col>
-        <Col md={6} style={{ margin: "10px 0px 10px 0px" }}>
-          <FormControl placeholder="Job Title" />
-        </Col>
-        <Col md={6} style={{ margin: "10px 0px 10px 0px" }}>
-          <FormControl placeholder="Month of Joining" aria-label="Email" />
-        </Col>
-        <Col md={6} style={{ margin: "10px 0px 10px 0px" }}>
-          <FormControl placeholder="Year of Joining" aria-label="Email" />
-        </Col>
-        <Col md={6} style={{ margin: "10px 0px 10px 0px" }}>
-          <FormControl placeholder="Month of Leaving" aria-label="Email" />
-        </Col>
-        <Col md={6} style={{ margin: "10px 0px 10px 0px" }}>
-          <FormControl placeholder="Year of Leaving" aria-label="Email" />
-        </Col>
-        <Col md={6} style={{ margin: "10px 0px 10px 0px" }}>
-          <FormControl placeholder="Location" />
-        </Col>
-        <Col md={6} style={{ margin: "10px 0px 10px 0px" }}>
-          <FormControl placeholder="Work Summary" as="textarea" />
-        </Col>
+        {workExperience.map((field, id) => {
+          return (
+            <Col md={6} style={{ margin: "10px 0px 10px 0px" }}>
+              {field.type === "textarea" ? (
+                <FormControl
+                  placeholder={field.placeholder}
+                  aria-label={field.name}
+                  name={field.name}
+                  as="textarea"
+                />
+              ) : (
+                <FormControl
+                  placeholder={field.placeholder}
+                  aria-label={field.name}
+                  name={field.name}
+                  type={field.type}
+                />
+              )}
+            </Col>
+          );
+        })}
       </Row>
     </>
   );

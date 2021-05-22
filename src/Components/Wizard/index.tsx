@@ -1,12 +1,28 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Stepper } from "../Stepper";
-import { Education, Experience, PersonalDetails } from "../Forms";
+import {
+  CareerAchievements,
+  Education,
+  Experience,
+  PersonalDetails,
+  Projects,
+  Skills,
+} from "../Forms";
 import { Card, Col, Row } from "react-bootstrap";
 import { WizardStyled as Styled } from "./styled";
 
+const { Container, Button } = Styled();
+
 function Wizard() {
-  const steps = ["Personal Details", "Education", "Experience"];
+  const steps = [
+    "Personal Details",
+    "Education",
+    "Experience",
+    "Skills",
+    "Projects",
+    "Achievements",
+  ];
   const [currentStep, setCurrentStep] = useState(1);
 
   const getForm = (step: number) => {
@@ -17,10 +33,14 @@ function Wizard() {
         return <Education />;
       case 3:
         return <Experience />;
+      case 4:
+        return <Skills />;
+      case 5:
+        return <Projects />;
+      case 6:
+        return <CareerAchievements />;
     }
   };
-
-  const { Container, Button } = Styled();
 
   return (
     <Container>
