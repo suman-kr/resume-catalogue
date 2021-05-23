@@ -1,10 +1,14 @@
+import Head from "next/head";
 import StepWizard from "../src/Components/Wizard";
 
 const Main = () => {
   return (
-    <div>
+    <>
+      <Head>
+        <title>Fill Details</title>
+      </Head>
       <StepWizard />
-    </div>
+    </>
   );
 };
 

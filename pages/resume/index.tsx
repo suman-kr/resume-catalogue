@@ -4,10 +4,13 @@ import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faGlobe, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import { ResumeStyled } from "../../src/Components/Resume/styled";
+import Head from "next/head";
+
 const Styled = ResumeStyled();
 const Resume = () => {
   return (
     <div>
+      <Head>Resume</Head>
       <Styled.Heading>Suman Kumar</Styled.Heading>
       <Styled.PersonalContact>
         <div>
