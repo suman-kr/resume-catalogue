@@ -1,9 +1,13 @@
 import React from "react";
 import { Row, Col, FormControl, Button } from "react-bootstrap";
 import { workExperience } from "../../constants/FormConst";
+import { FormsStyled } from "./styled";
+
+const { FadeIn } = FormsStyled();
+
 export const Experience: React.FC = (props: any) => {
   return (
-    <>
+    <FadeIn>
       <Button style={{ width: "3em", height: "3em", borderRadius: "50%" }}>
         Add
       </Button>
@@ -30,6 +34,6 @@ export const Experience: React.FC = (props: any) => {
           );
         })}
       </Row>
-    </>
+    </FadeIn>
   );
 };

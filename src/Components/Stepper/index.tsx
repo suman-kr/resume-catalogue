@@ -57,7 +57,17 @@ export class Stepper extends React.Component<Props, State> {
   };
 
   render() {
-    return <Card style={{ padding: "2rem" }}>{this.displaySteps()}</Card>;
+    return (
+      <Card
+        style={{
+          padding: "2rem",
+          boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
+          borderRadius: 0,
+        }}
+      >
+        {this.displaySteps()}
+      </Card>
+    );
   }
 }
 

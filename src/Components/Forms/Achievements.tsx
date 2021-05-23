@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { Row, Col, FormControl } from "react-bootstrap";
 import { careerAchievements } from "../../constants/FormConst";
+import { FormsStyled } from "./styled";
+
+const { FadeIn } = FormsStyled();
 export const CareerAchievements: React.FC = (props: any) => {
   return (
-    <>
+    <FadeIn>
       <Row>
         {careerAchievements.map((field) => (
           <Col md={12} style={{ margin: "10px 0px 10px 0px" }}>
@@ -16,6 +19,6 @@ export const CareerAchievements: React.FC = (props: any) => {
           </Col>
         ))}
       </Row>
-    </>
+    </FadeIn>
   );
 };

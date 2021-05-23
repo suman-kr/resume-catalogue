@@ -1,5 +1,4 @@
-import styled from "styled-components";
-
+import styled, { keyframes } from "styled-components";
 export function WizardStyled() {
   const Container = styled.div`
     margin-top: 50px;

@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Row, Col, FormControl, Button } from "react-bootstrap";
 import { projects } from "../../constants/FormConst";
+import { FormsStyled } from "./styled";
 
+const { FadeIn } = FormsStyled();
 export const Projects: React.FC = (props: any) => {
   return (
-    <>
+    <FadeIn>
       <Button style={{ width: "3em", height: "3em", borderRadius: "50%" }}>
         Add
       </Button>
@@ -24,6 +26,6 @@ export const Projects: React.FC = (props: any) => {
           </Col>
         ))}
       </Row>
-    </>
+    </FadeIn>
   );
 };
