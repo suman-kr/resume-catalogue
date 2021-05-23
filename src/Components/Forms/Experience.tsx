@@ -1,6 +1,7 @@
 import React from "react";
 import { Row, Col, FormControl, Button } from "react-bootstrap";
 import { workExperience } from "../../constants/FormConst";
+import { AddButton } from "../Common/AddButton";
 import { FormsStyled } from "./styled";
 
 const { FadeIn } = FormsStyled();
@@ -8,9 +9,7 @@ const { FadeIn } = FormsStyled();
 export const Experience: React.FC = (props: any) => {
   return (
     <FadeIn>
-      <Button style={{ width: "3em", height: "3em", borderRadius: "50%" }}>
-        Add
-      </Button>
+      <AddButton />
       <Row>
         {workExperience.map((field, id) => {
           return (
