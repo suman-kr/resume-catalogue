@@ -1,8 +1,18 @@
 import "./style.scss";
+import { store, persistor } from "../../src/Redux/store";
+import { PersistGate } from "redux-persist/integration/react";
+import React from "react";
+import { Provider } from "react-redux";
 
 function MyApp(props: MyAppProps) {
   const { Component, pageProps } = props;
-  return <Component {...pageProps} />;
+  return (
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <Component {...pageProps} />
+      </PersistGate>
+    </Provider>
+  );
 }
 
 // Only uncomment this method if you have blocking data requirements for

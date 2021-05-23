@@ -14,7 +14,6 @@ export const CareerAchievements: React.FC = (props: any) => {
               placeholder={field.placeholder}
               name={field.name}
               as="textarea"
-              rows={1}
             />
           </Col>
         ))}
