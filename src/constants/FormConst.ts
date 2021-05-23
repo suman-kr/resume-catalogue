@@ -88,7 +88,7 @@ export const education = [
 
 export const skills = [
   { placeholder: "Name", name: "skillName", index: 1 },
-  { placeholder: "Rating", name: "rating", index: 2 },
+  { placeholder: "Expertise", name: "rating", index: 2 },
 ];
 
 export const projects = [

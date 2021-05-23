@@ -1,11 +1,12 @@
 import React from "react";
-import { Row, Col, FormControl } from "react-bootstrap";
+import { Row, Col, FormControl, Form, Button } from "react-bootstrap";
 import { personalDetails } from "../../constants/FormConst";
+import { InitialProps } from "./interfaces";
 import { FormsStyled } from "./styled";
 
 const { FadeIn } = FormsStyled();
 
-export const PersonalDetails: React.FC = (props: any) => {
+export const PersonalDetails: React.FC<InitialProps> = (props) => {
   return (
     <>
       <FadeIn>
@@ -16,7 +17,7 @@ export const PersonalDetails: React.FC = (props: any) => {
                 <FormControl
                   placeholder={field.placeholder}
                   aria-label={field.placeholder}
-                  name={field.name}
+                  {...props.formik.getFieldProps(field.name)}
                 />
               </Col>
             );

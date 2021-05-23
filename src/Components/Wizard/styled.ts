@@ -6,6 +6,7 @@ export function WizardStyled() {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: 'Lato', sans-serif;
   `;
 
   const Button = styled.button`

@@ -3,6 +3,7 @@ import { store, persistor } from "../../src/Redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 import React from "react";
 import { Provider } from "react-redux";
+import withRedux from "next-redux-wrapper";
 
 function MyApp(props: MyAppProps) {
   const { Component, pageProps } = props;
@@ -26,10 +27,11 @@ function MyApp(props: MyAppProps) {
 //
 //   return { ...appProps }
 // }
+const makeStore = () => store;
 
 interface MyAppProps {
   Component: any;
   pageProps: any;
 }
 
-export default MyApp;
+export default withRedux(makeStore)(MyApp);
