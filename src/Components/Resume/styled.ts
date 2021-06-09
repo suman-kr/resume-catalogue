@@ -1,27 +1,26 @@
 import styled from "styled-components";
 
 interface ResumeStyledProps {
-    Heading: any,
-    LightText: any,
-    SubHeading: any,
-    Title: any,
-    HeadingHorizontalSeperator: any,
-    Subtitle: any,
-    ProjectSection: any,
-    EducationSection: any,
-    PersonalContact: any,
-    ExperienceDetailList: any,
-    VerticalSeperator: any,
-    ExperienceSubHeading: any,
-    Link: any,
-    Skill: any,
-    ExperienceSection: any,
-    EducationSubHeading: any,
-    SkillList: any,
-    Contact: any,
-    HorizontalSeperator: any,
+  Heading: any;
+  LightText: any;
+  SubHeading: any;
+  Title: any;
+  HeadingHorizontalSeperator: any;
+  Subtitle: any;
+  ProjectSection: any;
+  EducationSection: any;
+  PersonalContact: any;
+  ExperienceDetailList: any;
+  VerticalSeperator: any;
+  ExperienceSubHeading: any;
+  Link: any;
+  Skill: any;
+  ExperienceSection: any;
+  EducationSubHeading: any;
+  SkillList: any;
+  Contact: any;
+  HorizontalSeperator: any;
 }
-
 
 export function ResumeStyled(): ResumeStyledProps {
   const Title = styled.span`
@@ -61,6 +60,7 @@ export function ResumeStyled(): ResumeStyledProps {
   const Link = styled.a`
     font-size: 14px;
     text-decoration: none;
+    color: black;
     &:visited {
       color: black;
     }

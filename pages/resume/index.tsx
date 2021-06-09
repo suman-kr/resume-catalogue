@@ -9,7 +9,7 @@ import Head from "next/head";
 const Styled = ResumeStyled();
 const Resume = () => {
   return (
-    <div>
+    <div className="resume-container">
       <Head>Resume</Head>
       <Styled.Heading>Suman Kumar</Styled.Heading>
       <Styled.PersonalContact>
@@ -62,7 +62,7 @@ const Resume = () => {
         <Styled.ExperienceDetailList>
           <li>
             Contributed to the development of I-Stem portal for responsive and
-            accessible UI, resilient and robust backend.
+            accessible UI, resilient and robust backend. Working on MERN stack.
           </li>
           <li>
             Implemented caching logic for AFC requests on AWS S3 bucket and
@@ -73,20 +73,18 @@ const Resume = () => {
             the product.
           </li> */}
           <li>
-            Built reusable commonly used components. Working on interactive UIs
-            from scratch using React-Bootstrap.
+            Built a PDF Annotation interface to draw bounding boxes on the PDF
+            pages to annotate text with HTML labels using canvas. Added
+            functionalities for dragging, resizing, merging and splitting of the
+            boxes. Created service for storing and generating HTML output of the
+            PDF. It reduced the efforts of PDF remediations.
           </li>
           <li>
-            Developed University flow for onboarding of students and staffs to
-            the portal.
-          </li>
-          <li>
-            Designed and developed Admin flow for managing user/organization
-            requests.
-          </li>
-          <li>
-            Managed role based authorization of users on portal through JWT and
-            casl.
+            Developed an Admin flow through which user/organization requests can
+            be managed from the portal. It eliminated the efforts of managing
+            requests through email. And solved the vulnerability of exposing the
+            API to unauthorized users. Added role-based authorization to the
+            portal using JWT and casl.
           </li>
           <li>
             Perform Unit Testing and API Testing with code coverage of more than
@@ -106,7 +104,7 @@ const Resume = () => {
           <Styled.Subtitle>Bangalore</Styled.Subtitle>
           <Styled.ExperienceDetailList>
             <li>
-              Worked on multiple webapp projects using React.js and Django
+              Worked on multiple webapp projects using ReactJS and Django
               {/* Rust. */}
             </li>
             <li>
@@ -138,9 +136,11 @@ const Resume = () => {
           </Styled.ExperienceSection>
           <Styled.Subtitle>Bangalore</Styled.Subtitle>
           <Styled.ExperienceDetailList>
-            <li>Worked on core Java for backend development</li>
-            <li>Worked on REST services and API testing</li>
-            <li>Worked with Bootstrap and HTML/CSS for UI development</li>
+            <li>Worked on core Java and MySQL for developing REST services.</li>
+            <li>
+              Developed UI components such as Carousel and flashcards for the
+              product using jQuery and Bootstrap.
+            </li>
           </Styled.ExperienceDetailList>
         </div>
       </div>
@@ -180,10 +180,9 @@ const Resume = () => {
             </div>
           </Styled.ProjectSection>
           <Styled.ExperienceDetailList>
-            <li>A notepad app to save multiple notes on the fly.</li>
             <li>
-              It supports personalized URL and also have random URL generation
-              by default.
+              A notepad app to save multiple notes on the fly. It supports
+              personalized URL and also have random URL generation by default.
             </li>
             <li>
               <Styled.LightText>Tech Stack</Styled.LightText>: ReactJS, Django,
@@ -207,13 +206,11 @@ const Resume = () => {
 
           <Styled.ExperienceDetailList>
             <li>
-              A python library which scrapes scrapes data from multiple websites
-              and offers multiple quote genres.
+              Built a python library that scrapes data from multiple websites
+              and offers multiple quote genres. Also added offline support for
+              fallback. It has more than ten dependents on Github.
             </li>
-            <li>
-              It is deployed on PyPi and have also exposed a public API which
-              consumes the package.
-            </li>
+            <li>Exposed a public API which consumes the package.</li>
             <li>
               <Styled.LightText>Tech Stack</Styled.LightText>: Python, FastAPI
             </li>
@@ -226,19 +223,22 @@ const Resume = () => {
               <Styled.Link href="https://github.com/suman-kr/resume-catalogue">
                 Github
               </Styled.Link>
+              <Styled.VerticalSeperator />
+              <Styled.Link href="https://resume-catalogue.vercel.app/">
+                Website
+              </Styled.Link>
             </div>
           </Styled.ProjectSection>
           <Styled.ExperienceDetailList>
             <li>
-              A web app to facilitate the user in creating a resume of different
-              layouts using the resume wizard.
+              Developed a web-based resume builder to facilitate the user in
+              creating and managing resumes of different layouts using the
+              resume wizard. It provides a sharable link for the generated
+              resume.
             </li>
             <li>
-              Implemented stepper component from scratch using React-Bootstrap.
-            </li>
-            <li>It provides a sharable link for the generated resume.</li>
-            <li>
-              <Styled.LightText>Tech Stack</Styled.LightText>: ReactJS
+              <Styled.LightText>Tech Stack</Styled.LightText>: NextJS, Redux,
+              NodeJS
             </li>
           </Styled.ExperienceDetailList>
         </div>

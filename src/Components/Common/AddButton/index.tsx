@@ -5,10 +5,14 @@ import { AddButtonStyled } from "./styled";
 
 const { Button } = AddButtonStyled();
 
-export const AddButton: React.FC = (props) => {
+export const AddButton: React.FC<AddButtonProps> = (props) => {
   return (
-    <Button>
+    <Button onClick={props.onClick}>
       <FontAwesomeIcon icon={faPlus} color="white" />
     </Button>
   );
 };
+
+interface AddButtonProps {
+  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+}

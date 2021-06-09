@@ -15,7 +15,7 @@ import { WizardInterface } from "./interfaces";
 import { Formik, FormikProps } from "formik";
 import * as Yup from "yup";
 
-const { Container, Button } = Styled();
+const { Container, Button, ButtonContainer } = Styled();
 
 function Wizard(props: WizardInterface) {
   const steps = [
@@ -51,49 +51,65 @@ function Wizard(props: WizardInterface) {
   };
 
   return (
-    <Container>
-      <Stepper
-        currentStep={currentStep}
-        steps={steps}
-        key={currentStep}
-        toggleStep={(step) => setCurrentStep(step)}
-      />
-      <Card className="wizard-card">
-        <Formik
-          initialValues={{ firstName: "", lastName: "", email: "" }}
-          onSubmit={(values) => {
-            console.log(values);
+    <>
+      <div
+        style={{ minHeight: "50px", width: "100%", background: "black" }}
+      ></div>
+      <Container>
+        <Stepper
+          currentStep={currentStep}
+          steps={steps}
+          key={currentStep}
+          toggleStep={(step) => setCurrentStep(step)}
+        />
+        <Card className="wizard-card">
+          <Formik
+            initialValues={{ firstName: "", lastName: "", email: "" }}
+            onSubmit={(values) => {
+              console.log(values);
+            }}
+          >
+            {(formik) => (
+              <Form onSubmit={formik.handleSubmit}>
+                {getForm(currentStep, formik)}
+              </Form>
+            )}
+          </Formik>
+          <ButtonContainer>
+            {currentStep > 1 && (
+              <Button
+                disabled={currentStep === 1}
+                onClick={() => setCurrentStep(currentStep - 1)}
+              >
+                Previous
+              </Button>
+            )}
+            {currentStep < 6 && (
+              <Button
+                disabled={currentStep === steps.length}
+                onClick={(event) => {
+                  setCurrentStep(currentStep + 1);
+                }}
+              >
+                Next
+              </Button>
+            )}
+          </ButtonContainer>
+        </Card>
+        <img
+          src={"/static/images/resume.svg"}
+          style={{
+            position: "absolute",
+            bottom: 0,
+            right: 0,
+            zIndex: -1,
+            opacity: "0.75",
           }}
-        >
-          {(formik) => (
-            <Form onSubmit={formik.handleSubmit}>
-              {getForm(currentStep, formik)}
-            </Form>
-          )}
-        </Formik>
-
-        <Row>
-          <Col md={3} sm={2} xs={12}>
-            <Button
-              disabled={currentStep === 1}
-              onClick={() => setCurrentStep(currentStep - 1)}
-            >
-              Previous
-            </Button>
-          </Col>
-          <Col md={1} sm={2} xs={12}>
-            <Button
-              disabled={currentStep === steps.length}
-              onClick={(event) => {
-                setCurrentStep(currentStep + 1);
-              }}
-            >
-              Next
-            </Button>
-          </Col>
-        </Row>
-      </Card>
-    </Container>
+          width={250}
+          height={250}
+        />
+      </Container>
+    </>
   );
 }
 

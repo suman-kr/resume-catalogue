@@ -6,7 +6,7 @@ export function WizardStyled() {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
   `;
 
   const Button = styled.button`
@@ -15,10 +15,19 @@ export function WizardStyled() {
     text-transform: uppercase;
     margin-bottom: 5px;
     color: white;
+    max-width: 300px;
+    border: none;
+  `;
+
+  const ButtonContainer = styled.div`
+    display: grid;
+    grid-auto-flow: column;
+    gap: 5px;
   `;
 
   return {
     Container,
     Button,
+    ButtonContainer,
   };
 }

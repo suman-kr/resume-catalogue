@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export function AddButtonStyled() {
+export function RemoveButtonStyled() {
   const Button = styled.button`
     width: 3em;
     height: 3em;

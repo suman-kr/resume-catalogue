@@ -16,14 +16,12 @@ export const Projects: React.FC<InitialProps> = (props) => {
             {field.type === "textarea" ? (
               <FormControl
                 placeholder={field.placeholder}
-                {...props.formik.getFieldProps(field.name)}
                 as="textarea"
                 rows={1}
               />
             ) : (
               <FormControl
                 placeholder={field.placeholder}
-                {...props.formik.getFieldProps(field.name)}
               />
             )}
           </Col>

@@ -15,7 +15,7 @@ export const personalDetails = [
     placeholder: "Phone Number",
     type: "text",
     index: 3,
-    name: "phoneNumber",
+    name: "contact",
   },
   {
     placeholder: "Linkedin",
@@ -33,7 +33,7 @@ export const personalDetails = [
     placeholder: "Portfolio/Website",
     type: "text",
     index: 6,
-    name: "portfolio",
+    name: "website",
   },
 ];
 
@@ -88,14 +88,14 @@ export const education = [
 
 export const skills = [
   { placeholder: "Name", name: "skillName", index: 1 },
-  { placeholder: "Expertise", name: "rating", index: 2 },
+  { placeholder: "Expertise", name: "expertise", index: 2 },
 ];
 
 export const projects = [
   { placeholder: "Project Name", name: "projectName", index: 1, type: "text" },
   {
     placeholder: "Description",
-    name: "aboutProject",
+    name: "projectDescription",
     index: 2,
     type: "textarea",
   },
@@ -104,7 +104,8 @@ export const projects = [
 export const careerAchievements = [
   {
     placeholder: "Achievement Description",
-    name: "achievementDescription",
+    name: "achievements",
     type: "textarea",
+    index: 1
   },
 ];

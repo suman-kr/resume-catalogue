@@ -19,14 +19,12 @@ export const Experience: React.FC<InitialProps> = (props) => {
                 <FormControl
                   placeholder={field.placeholder}
                   aria-label={field.placeholder}
-                  {...props.formik.getFieldProps(field.name)}
                   as="textarea"
                 />
               ) : (
                 <FormControl
                   placeholder={field.placeholder}
                   aria-label={field.name}
-                  {...props.formik.getFieldProps(field.name)}
                   type={field.type}
                 />
               )}

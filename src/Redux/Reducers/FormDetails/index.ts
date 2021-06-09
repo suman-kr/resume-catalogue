@@ -7,8 +7,30 @@ interface Action<T> extends ReduxAction {
 interface FormPayload {}
 
 const INITIAL_STATE = {
-  name: "",
+  fullName: "",
   email: "",
+  phoneNumber: "",
+  linkedIn: "",
+  github: "",
+  website: "",
+  company: [],
+  title: [],
+  employmentType: [],
+  location: [],
+  description: [],
+  startDate: [],
+  endDate: [],
+  instituteName: "",
+  degree: "",
+  major: "",
+  startYear: "",
+  endYear: "",
+  grade: "",
+  skillName: [],
+  expertise: [],
+  projectName: [],
+  projectDescription: [],
+  achievements: "",
 };
 
 type MapPayload = FormPayload;
