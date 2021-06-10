@@ -15,7 +15,7 @@ import { WizardInterface } from "./interfaces";
 import { Formik, FormikProps } from "formik";
 import * as Yup from "yup";
 
-const { Container, Button, ButtonContainer } = Styled();
+const { Container, Button, ButtonContainer, ImageContainer } = Styled();
 
 function Wizard(props: WizardInterface) {
   const steps = [
@@ -96,15 +96,8 @@ function Wizard(props: WizardInterface) {
             )}
           </ButtonContainer>
         </Card>
-        <img
+        <ImageContainer
           src={"/static/images/resume.svg"}
-          style={{
-            position: "absolute",
-            bottom: 0,
-            right: 0,
-            zIndex: -1,
-            opacity: "0.75",
-          }}
           width={250}
           height={250}
         />
