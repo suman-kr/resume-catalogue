@@ -19,7 +19,7 @@ export const validationSchemas = [
     grade: Yup.string(),
   }),
 
-  Yup.object({
+  Yup.object().shape({
     experience: Yup.array().of(
       Yup.object().shape({
         company: Yup.string().required("Company Name is required"),
@@ -34,5 +34,27 @@ export const validationSchemas = [
         endDate: Yup.string(),
       })
     ),
+  }),
+
+  Yup.object().shape({
+    skills: Yup.array().of(
+      Yup.object().shape({
+        skillName: Yup.string(),
+        expertise: Yup.string(),
+      })
+    ),
+  }),
+
+  Yup.object().shape({
+    projects: Yup.array().of(
+      Yup.object().shape({
+        projectName: Yup.string(),
+        projectDescription: Yup.string(),
+      })
+    ),
+  }),
+
+  Yup.object({
+    achievements: Yup.string(),
   }),
 ];

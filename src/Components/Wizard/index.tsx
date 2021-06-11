@@ -9,11 +9,13 @@ import {
   Projects,
   Skills,
 } from "../Forms";
-import { Card, Col, Form, Row } from "react-bootstrap";
+import { Card, Col, Row } from "react-bootstrap";
 import { WizardStyled as Styled } from "./styled";
 import { WizardInterface } from "./interfaces";
-import { Formik, FormikProps } from "formik";
+import { Formik, FormikProps, Form } from "formik";
 import * as Yup from "yup";
+import { validationSchemas } from "../Forms/validationSchemas";
+import { formInitialValues } from "../Forms/formInitialValue";
 
 const { Container, Button, ButtonContainer, ImageContainer } = Styled();
 
@@ -50,6 +52,26 @@ function Wizard(props: WizardInterface) {
     }
   };
 
+  const _handleSubmit = (values, actions) => {
+    console.log(values);
+    if (currentStep !== steps.length) {
+      setCurrentStep(currentStep + 1);
+    }
+    // if (currentStep !== steps.length) {
+    // setCurrentStep(currentStep + 1);
+    // }
+    // if (currentStep !== steps.length) {
+    //   setCurrentStep(currentStep + 1);
+    //   // _submitForm(values, actions);
+    // } else {
+    //   // setActiveStep(activeStep + 1);
+    //   actions.setTouched({});
+    //   actions.setSubmitting(false);
+    // }
+  };
+
+  const isLastStep = currentStep === steps.length;
+
   return (
     <>
       <div
@@ -64,37 +86,29 @@ function Wizard(props: WizardInterface) {
         />
         <Card className="wizard-card">
           <Formik
-            initialValues={{ firstName: "", lastName: "", email: "" }}
-            onSubmit={(values) => {
-              console.log(values);
-            }}
+            initialValues={formInitialValues}
+            onSubmit={_handleSubmit}
+            validationSchema={validationSchemas[currentStep - 1]}
           >
             {(formik) => (
               <Form onSubmit={formik.handleSubmit}>
                 {getForm(currentStep, formik)}
+                <ButtonContainer>
+                  {currentStep > 1 && (
+                    <Button
+                      disabled={currentStep === 1}
+                      onClick={() => setCurrentStep(currentStep - 1)}
+                    >
+                      Previous
+                    </Button>
+                  )}
+                  <Button type="submit">
+                    {isLastStep ? "Submit" : "Next"}
+                  </Button>
+                </ButtonContainer>
               </Form>
             )}
           </Formik>
-          <ButtonContainer>
-            {currentStep > 1 && (
-              <Button
-                disabled={currentStep === 1}
-                onClick={() => setCurrentStep(currentStep - 1)}
-              >
-                Previous
-              </Button>
-            )}
-            {currentStep < 6 && (
-              <Button
-                disabled={currentStep === steps.length}
-                onClick={(event) => {
-                  setCurrentStep(currentStep + 1);
-                }}
-              >
-                Next
-              </Button>
-            )}
-          </ButtonContainer>
         </Card>
         <ImageContainer
           src={"/static/images/resume.svg"}
