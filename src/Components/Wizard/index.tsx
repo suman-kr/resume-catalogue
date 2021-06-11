@@ -52,7 +52,7 @@ function Wizard(props: WizardInterface) {
     }
   };
 
-  const _handleSubmit = (values, actions) => {
+  const _handleSubmit = (values: any, actions: any) => {
     props.updateForms({ ...values });
     if (currentStep !== steps.length) {
       setCurrentStep(currentStep + 1);
