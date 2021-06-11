@@ -26,11 +26,8 @@ export const validationSchemas = [
         title: Yup.string().required("Designation is required"),
         employmentType: Yup.string().required("Employment Type is required"),
         location: Yup.string(),
-        description: Yup.string().required("Work details is required"),
-        startDate: Yup.string()
-          .min(4)
-          .max(4)
-          .required("Start date is required"),
+        description: Yup.string().required("Work details are required"),
+        startDate: Yup.string(),
         endDate: Yup.string(),
       })
     ),

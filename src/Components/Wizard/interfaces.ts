@@ -1,4 +1,6 @@
+import { FormPayload } from "../../Redux/Reducers/FormDetails";
+
 export interface WizardInterface {
-  updateForms: (value: any) => void;
+  updateForms: (value: FormPayload) => void;
   forms: any;
 }

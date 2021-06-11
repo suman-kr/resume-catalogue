@@ -53,21 +53,13 @@ function Wizard(props: WizardInterface) {
   };
 
   const _handleSubmit = (values, actions) => {
-    console.log(values);
+    props.updateForms({ ...values });
     if (currentStep !== steps.length) {
       setCurrentStep(currentStep + 1);
+      actions.setTouched({});
+    } else {
+      console.log(values);
     }
-    // if (currentStep !== steps.length) {
-    // setCurrentStep(currentStep + 1);
-    // }
-    // if (currentStep !== steps.length) {
-    //   setCurrentStep(currentStep + 1);
-    //   // _submitForm(values, actions);
-    // } else {
-    //   // setActiveStep(activeStep + 1);
-    //   actions.setTouched({});
-    //   actions.setSubmitting(false);
-    // }
   };
 
   const isLastStep = currentStep === steps.length;

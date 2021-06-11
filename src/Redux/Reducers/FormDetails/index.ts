@@ -4,32 +4,41 @@ interface Action<T> extends ReduxAction {
   payload?: T;
 }
 
-interface FormPayload {}
+export interface FormPayload {
+  fullName?: string;
+  email?: string;
+  phoneNumber?: string;
+  linkedIn?: string;
+  github?: string;
+  website?: string;
+  experience?: Array<any>;
+  instituteName?: string;
+  degree?: string;
+  major?: string;
+  startYear?: string;
+  endYear?: string;
+  grade?: string;
+  skills?: Array<any>;
+  projects?: Array<any>;
+  achievements?: string;
+}
 
-const INITIAL_STATE = {
+const INITIAL_STATE: FormPayload = {
   fullName: "",
   email: "",
   phoneNumber: "",
   linkedIn: "",
   github: "",
   website: "",
-  company: [],
-  title: [],
-  employmentType: [],
-  location: [],
-  description: [],
-  startDate: [],
-  endDate: [],
+  experience: [],
   instituteName: "",
   degree: "",
   major: "",
   startYear: "",
   endYear: "",
   grade: "",
-  skillName: [],
-  expertise: [],
-  projectName: [],
-  projectDescription: [],
+  skills: [],
+  projects: [],
   achievements: "",
 };
 
