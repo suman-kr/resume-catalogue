@@ -12,9 +12,9 @@ export const validationSchemas = [
   }),
   Yup.object({
     instituteName: Yup.string().required("Institute name is required"),
-    degree: Yup.string(),
-    major: Yup.string(),
-    startYear: Yup.string(),
+    degree: Yup.string().required("Degree is required"),
+    major: Yup.string().required("Field of study is required"),
+    startYear: Yup.string().required("Start year is required"),
     endYear: Yup.string(),
     grade: Yup.string(),
   }),
@@ -27,7 +27,7 @@ export const validationSchemas = [
         employmentType: Yup.string().required("Employment Type is required"),
         location: Yup.string(),
         description: Yup.string().required("Work details are required"),
-        startDate: Yup.string(),
+        startDate: Yup.string().required("Joining date is required"),
         endDate: Yup.string(),
       })
     ),
@@ -36,7 +36,7 @@ export const validationSchemas = [
   Yup.object().shape({
     skills: Yup.array().of(
       Yup.object().shape({
-        skillName: Yup.string(),
+        skillName: Yup.string().required("Name is required"),
         expertise: Yup.string(),
       })
     ),
@@ -45,8 +45,8 @@ export const validationSchemas = [
   Yup.object().shape({
     projects: Yup.array().of(
       Yup.object().shape({
-        projectName: Yup.string(),
-        projectDescription: Yup.string(),
+        projectName: Yup.string().required("Project name is required"),
+        projectDescription: Yup.string().required("Description is required"),
       })
     ),
   }),

@@ -1,4 +1,4 @@
-import { FieldArray } from "formik";
+import { ErrorMessage, FieldArray } from "formik";
 import React from "react";
 import { Row, Col, FormControl, Button, Card } from "react-bootstrap";
 import { workExperience } from "../../constants/FormConst";
@@ -69,6 +69,9 @@ export const Experience: React.FC<InitialProps> = (props) => {
                                   type={field.type}
                                 />
                               )}
+                              <ErrorMessage
+                                name={`experience[${index}][${field.name}]`}
+                              />
                             </Col>
                           );
                         })}

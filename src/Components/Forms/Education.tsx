@@ -16,6 +16,12 @@ export const Education: React.FC<InitialProps> = (props) => {
               placeholder={field.placeholder}
               {...props.formik.getFieldProps(field.name)}
             />
+            {(props.formik.errors as any)[field.name] &&
+            (props.formik.touched as any)[field.name] ? (
+              <div className="error">
+                {(props.formik.errors as any)[field.name]}
+              </div>
+            ) : null}
           </Col>
         ))}
       </Row>

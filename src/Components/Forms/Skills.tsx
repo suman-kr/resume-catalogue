@@ -1,4 +1,4 @@
-import { FieldArray } from "formik";
+import { ErrorMessage, FieldArray } from "formik";
 import React, { useState } from "react";
 import { Row, Col, FormControl, Button, Card } from "react-bootstrap";
 import { skills } from "../../constants/FormConst";
@@ -41,15 +41,15 @@ export const Skills: React.FC<InitialProps> = (props) => {
                     </FormContainer>
                     <Row>
                       {skills.map((field) => (
-                        <Col
-                          md={6}
-                          style={{ margin: "10px 0px 10px 0px" }}
-                        >
+                        <Col md={6} style={{ margin: "10px 0px 10px 0px" }}>
                           <FormControl
                             placeholder={field.placeholder}
                             {...formik.getFieldProps(
                               `skills[${index}].${field.name}`
                             )}
+                          />
+                          <ErrorMessage
+                            name={`skills[${index}][${field.name}]`}
                           />
                         </Col>
                       ))}

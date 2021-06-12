@@ -1,4 +1,4 @@
-import { FieldArray } from "formik";
+import { ErrorMessage, FieldArray } from "formik";
 import React, { useState } from "react";
 import { Row, Col, FormControl, Button, Card } from "react-bootstrap";
 import { projects } from "../../constants/FormConst";
@@ -62,6 +62,9 @@ export const Projects: React.FC<InitialProps> = (props) => {
                               )}
                             />
                           )}
+                          <ErrorMessage
+                            name={`projects[${index}][${field.name}]`}
+                          />
                         </Col>
                       ))}
                     </Row>

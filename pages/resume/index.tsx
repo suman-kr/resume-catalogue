@@ -8,10 +8,37 @@ import Head from "next/head";
 import { FormActions } from "../../src/Redux/Actions/FormActions";
 import { connect } from "react-redux";
 import { FormPayload } from "../../src/Redux/Reducers/FormDetails";
+import { Month } from "../../src/data/month";
 
 const Styled = ResumeStyled();
 const Resume = (props: { forms: FormPayload }) => {
   const { forms } = props;
+  const _userNameParser = (link: string) => {
+    const index = link.lastIndexOf("/");
+    if (index > -1) {
+      return link.substring(index + 1);
+    }
+    return "";
+  };
+
+  const _formatDateForExperienceSection = (
+    startDate: string,
+    endDate: string
+  ) => {
+    const _startDate = new Date(startDate);
+    const _startMonth = Month[_startDate.getMonth()].abbreviation;
+    const _startYear = _startDate.getFullYear();
+    let formattedDate = `${_startMonth} ${_startYear} - `;
+    if (endDate === "") formattedDate += "Present";
+    else {
+      const _endDate = new Date(endDate);
+      const _endMonth = Month[_endDate.getMonth()].abbreviation;
+      const _endYear = _endDate.getFullYear();
+      formattedDate += `${_endMonth} ${_endYear}`;
+    }
+    return formattedDate;
+  };
+
   return (
     <div className="resume-container">
       <Head>Resume</Head>
@@ -32,16 +59,24 @@ const Resume = (props: { forms: FormPayload }) => {
         <div>
           <div>
             <FontAwesomeIcon icon={faLinkedin} style={{ marginRight: "3px" }} />
-            <Styled.Link href={forms.linkedIn}>linkedin/suman-kr</Styled.Link>
+            <Styled.Link href={forms.linkedIn}>
+              linkedin/{_userNameParser(forms.linkedIn)}
+            </Styled.Link>
           </div>
           <div>
             <FontAwesomeIcon icon={faGithub} style={{ marginRight: "3px" }} />
-            <Styled.Link href={forms.github}>github/suman-kr</Styled.Link>
+            <Styled.Link href={forms.github}>
+              github/{_userNameParser(forms.github)}
+            </Styled.Link>
           </div>
-          <div>
-            <FontAwesomeIcon icon={faGlobe} style={{ marginRight: "3px" }} />
-            <Styled.Link href={forms.website}>github.io/suman-kr</Styled.Link>
-          </div>
+          {forms.website !== "" && (
+            <div>
+              <FontAwesomeIcon icon={faGlobe} style={{ marginRight: "3px" }} />
+              <Styled.Link href={forms.website}>
+                github.io/{_userNameParser(forms.website)}
+              </Styled.Link>
+            </div>
+          )}
         </div>
       </Styled.PersonalContact>
 
@@ -56,7 +91,10 @@ const Resume = (props: { forms: FormPayload }) => {
                 {experinence.title}
               </Styled.ExperienceSubHeading>
               <Styled.ExperienceSubHeading>
-                Oct 2020 - Present
+                {_formatDateForExperienceSection(
+                  experinence.startDate,
+                  experinence.endDate
+                )}
               </Styled.ExperienceSubHeading>
             </Styled.ExperienceSection>
             <Styled.Subtitle>{experinence.location}</Styled.Subtitle>
@@ -127,15 +165,19 @@ const Resume = (props: { forms: FormPayload }) => {
           </div>
         </div>
       </div>
-      <Styled.HorizontalSeperator />
-      <div className="achievement-container">
-        <Styled.SubHeading>Achievements / Participations</Styled.SubHeading>
-        <Styled.ExperienceDetailList>
-          {forms.achievements.split("\n").map((item) => (
-            <li>{item}</li>
-          ))}
-        </Styled.ExperienceDetailList>
-      </div>
+      {forms.achievements && (
+        <>
+          <Styled.HorizontalSeperator />
+          <div className="achievement-container">
+            <Styled.SubHeading>Achievements / Participations</Styled.SubHeading>
+            <Styled.ExperienceDetailList>
+              {forms.achievements.split("\n").map((item) => (
+                <li>{item}</li>
+              ))}
+            </Styled.ExperienceDetailList>
+          </div>
+        </>
+      )}
     </div>
   );
 };

@@ -52,7 +52,6 @@ function Wizard(props: WizardInterface) {
       setCurrentStep(currentStep + 1);
       actions.setTouched({});
     } else {
-      console.log(values);
       router.push("/resume");
     }
   };
