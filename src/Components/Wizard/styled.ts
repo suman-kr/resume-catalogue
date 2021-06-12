@@ -13,7 +13,6 @@ export function WizardStyled() {
     background: black;
     height: 50px;
     text-transform: uppercase;
-    margin-bottom: 1em;
     color: white;
     max-width: 24em;
     border: none;

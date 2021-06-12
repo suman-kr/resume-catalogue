@@ -13,9 +13,8 @@ import { Card, Col, Row } from "react-bootstrap";
 import { WizardStyled as Styled } from "./styled";
 import { WizardInterface } from "./interfaces";
 import { Formik, FormikProps, Form } from "formik";
-import * as Yup from "yup";
 import { validationSchemas } from "../Forms/validationSchemas";
-import { formInitialValues } from "../Forms/formInitialValue";
+import { useRouter } from "next/router";
 
 const { Container, Button, ButtonContainer, ImageContainer } = Styled();
 
@@ -29,12 +28,7 @@ function Wizard(props: WizardInterface) {
     "Achievements",
   ];
   const [currentStep, setCurrentStep] = useState(1);
-
-  const saveDetails = (form: any) => {
-    console.log("forms: ", form.target.value);
-    // props.updateForms({ value });
-  };
-
+  const router = useRouter();
   const getForm = (step: number, formik: FormikProps<any>) => {
     switch (step) {
       case 1:
@@ -59,6 +53,7 @@ function Wizard(props: WizardInterface) {
       actions.setTouched({});
     } else {
       console.log(values);
+      router.push("/resume");
     }
   };
 
@@ -78,29 +73,33 @@ function Wizard(props: WizardInterface) {
         />
         <Card className="wizard-card">
           <Formik
-            initialValues={formInitialValues}
+            initialValues={{ ...props.forms }}
             onSubmit={_handleSubmit}
             validationSchema={validationSchemas[currentStep - 1]}
           >
             {(formik) => (
-              <Form onSubmit={formik.handleSubmit}>
+              <Form onSubmit={formik.handleSubmit} id="form">
                 {getForm(currentStep, formik)}
-                <ButtonContainer>
-                  {currentStep > 1 && (
-                    <Button
-                      disabled={currentStep === 1}
-                      onClick={() => setCurrentStep(currentStep - 1)}
-                    >
-                      Previous
-                    </Button>
-                  )}
-                  <Button type="submit">
-                    {isLastStep ? "Submit" : "Next"}
-                  </Button>
-                </ButtonContainer>
               </Form>
             )}
           </Formik>
+        </Card>
+        <Card className="button-card">
+          <ButtonContainer>
+            {currentStep > 1 && (
+              <Button
+                type="button"
+                disabled={currentStep === 1}
+                onClick={(event) => setCurrentStep(currentStep - 1)}
+                form="form"
+              >
+                Previous
+              </Button>
+            )}
+            <Button type="submit" form="form">
+              {isLastStep ? "Submit" : "Next"}
+            </Button>
+          </ButtonContainer>
         </Card>
         <ImageContainer
           src={"/static/images/resume.svg"}

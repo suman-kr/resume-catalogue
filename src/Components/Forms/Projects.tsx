@@ -1,6 +1,6 @@
 import { FieldArray } from "formik";
 import React, { useState } from "react";
-import { Row, Col, FormControl, Button } from "react-bootstrap";
+import { Row, Col, FormControl, Button, Card } from "react-bootstrap";
 import { projects } from "../../constants/FormConst";
 import { AddButton } from "../Common/AddButton";
 import { RemoveButton } from "../Common/RemoveButton";
@@ -9,6 +9,7 @@ import { FormsStyled } from "./styled";
 
 const { FadeIn, FormContainer } = FormsStyled();
 export const Projects: React.FC<InitialProps> = (props) => {
+  const { formik } = props;
   return (
     <FadeIn>
       <FieldArray
@@ -16,59 +17,57 @@ export const Projects: React.FC<InitialProps> = (props) => {
         render={(arrayHelpers) => {
           return (
             <>
-              <AddButton
-                onClick={(event) => {
-                  event.preventDefault();
-                  arrayHelpers.push({
-                    projectName: "",
-                    projectDescription: "",
-                  });
-                }}
-              />
-              <FormContainer>
-                {props.formik.values.projects.map(
-                  (project: any, index: number) => (
-                    <>
-                      <Row>
-                        {projects.map((field) => (
-                          <Col
-                            md={index > 0 ? 5 : 6}
-                            style={{ margin: "10px 0px 10px 0px" }}
-                          >
-                            {field.type === "textarea" ? (
-                              <FormControl
-                                placeholder={field.placeholder}
-                                as="textarea"
-                                rows={1}
-                                {...props.formik.getFieldProps(
-                                  `projects[${index}].${field.name}`
-                                )}
-                              />
-                            ) : (
-                              <FormControl
-                                placeholder={field.placeholder}
-                                {...props.formik.getFieldProps(
-                                  `projects[${index}].${field.name}`
-                                )}
-                              />
-                            )}
-                          </Col>
-                        ))}
-                        {index > 0 && (
-                          <div style={{ textAlign: "end" }}>
-                            <RemoveButton
-                              onClick={(event) => {
-                                event.preventDefault();
-                                arrayHelpers.remove(index);
-                              }}
+              {formik.values.projects.map((project: any, index: number) => (
+                <>
+                  <Card className="form-card">
+                    <FormContainer>
+                      <AddButton
+                        onClick={(event) => {
+                          event.preventDefault();
+                          arrayHelpers.push({
+                            projectName: "",
+                            projectDescription: "",
+                          });
+                        }}
+                      />
+
+                      {formik.values.projects.length > 1 && (
+                        <div style={{ textAlign: "end" }}>
+                          <RemoveButton
+                            onClick={(event) => {
+                              event.preventDefault();
+                              arrayHelpers.remove(index);
+                            }}
+                          />
+                        </div>
+                      )}
+                    </FormContainer>
+                    <Row>
+                      {projects.map((field) => (
+                        <Col md={6} style={{ margin: "10px 0px 10px 0px" }}>
+                          {field.type === "textarea" ? (
+                            <FormControl
+                              placeholder={field.placeholder}
+                              as="textarea"
+                              rows={1}
+                              {...formik.getFieldProps(
+                                `projects[${index}].${field.name}`
+                              )}
                             />
-                          </div>
-                        )}
-                      </Row>
-                    </>
-                  )
-                )}
-              </FormContainer>
+                          ) : (
+                            <FormControl
+                              placeholder={field.placeholder}
+                              {...formik.getFieldProps(
+                                `projects[${index}].${field.name}`
+                              )}
+                            />
+                          )}
+                        </Col>
+                      ))}
+                    </Row>
+                  </Card>
+                </>
+              ))}
             </>
           );
         }}

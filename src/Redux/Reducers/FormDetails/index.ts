@@ -5,40 +5,68 @@ interface Action<T> extends ReduxAction {
 }
 
 export interface FormPayload {
-  fullName?: string;
-  email?: string;
-  phoneNumber?: string;
-  linkedIn?: string;
-  github?: string;
-  website?: string;
-  experience?: Array<any>;
-  instituteName?: string;
-  degree?: string;
-  major?: string;
-  startYear?: string;
-  endYear?: string;
-  grade?: string;
-  skills?: Array<any>;
-  projects?: Array<any>;
-  achievements?: string;
+  fullName: string;
+  email: string;
+  contact: string;
+  linkedIn: string;
+  github: string;
+  website: string;
+  experience: {
+    company: string;
+    title: string;
+    employmentType: string;
+    location: string;
+    description: string;
+    startDate: string;
+    endDate: string;
+  }[];
+  instituteName: string;
+  degree: string;
+  major: string;
+  startYear: string;
+  endYear: string;
+  grade: string;
+  skills: { skillName: string; expertise: string }[];
+  projects: { projectName: string; projectDescription: string }[];
+  achievements: string;
 }
 
 const INITIAL_STATE: FormPayload = {
   fullName: "",
   email: "",
-  phoneNumber: "",
+  contact: "",
   linkedIn: "",
   github: "",
   website: "",
-  experience: [],
   instituteName: "",
   degree: "",
   major: "",
   startYear: "",
   endYear: "",
   grade: "",
-  skills: [],
-  projects: [],
+  experience: [
+    {
+      company: "",
+      title: "",
+      employmentType: "",
+      location: "",
+      description: "",
+      startDate: "",
+      endDate: "",
+    },
+  ],
+  skills: [
+    {
+      skillName: "",
+      expertise: "",
+    },
+  ],
+  projects: [
+    {
+      projectName: "",
+      projectDescription: "",
+    },
+  ],
   achievements: "",
 };
 

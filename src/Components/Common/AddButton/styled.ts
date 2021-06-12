@@ -2,14 +2,15 @@ import styled from "styled-components";
 
 export function AddButtonStyled() {
   const Button = styled.button`
-    width: 3em;
-    height: 3em;
+    width: 2em;
+    height: 2em;
     border-radius: 50%;
     background: black;
     border: 0;
 
     &:hover {
-      opacity: 0.75;
+      background: #71db9f;
+      color: white;
     }
 
     &:active {

@@ -6,9 +6,9 @@ export function FormsStyled() {
     animation: 1s ${keyframes`${fadeIn}`} 1;
   `;
   const FormContainer = styled.div`
-    max-height: 18em;
-    overflow-x: hidden;
-    overflow-y: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: -10px;
   `;
 
   return {
