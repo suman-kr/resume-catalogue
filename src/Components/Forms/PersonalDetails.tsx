@@ -19,8 +19,11 @@ export const PersonalDetails: React.FC<InitialProps> = (props) => {
                   aria-label={field.placeholder}
                   {...props.formik.getFieldProps(field.name)}
                 />
-                {props.formik.errors[field.name] && props.formik.touched[field.name] ? (
-                  <div className="error">{props.formik.errors[field.name]}</div>
+                {(props.formik.errors as any)[field.name] &&
+                (props.formik.touched as any)[field.name] ? (
+                  <div className="error">
+                    {(props.formik.errors as any)[field.name]}
+                  </div>
                 ) : null}
               </Col>
             );

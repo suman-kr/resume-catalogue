@@ -5,44 +5,42 @@ import { faGlobe, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import { ResumeStyled } from "../../src/Components/Resume/styled";
 import Head from "next/head";
+import { FormActions } from "../../src/Redux/Actions/FormActions";
+import { connect } from "react-redux";
+import { FormPayload } from "../../src/Redux/Reducers/FormDetails";
 
 const Styled = ResumeStyled();
-const Resume = () => {
+const Resume = (props: { forms: FormPayload }) => {
+  const { forms } = props;
   return (
     <div className="resume-container">
       <Head>Resume</Head>
-      <Styled.Heading>Suman Kumar</Styled.Heading>
+      <Styled.Heading>{forms.fullName}</Styled.Heading>
       <Styled.PersonalContact>
         <div>
           <div>
             <FontAwesomeIcon icon={faPhone} style={{ marginRight: "3px" }} />
-            <Styled.Contact>+91 8951928710 </Styled.Contact>
+            <Styled.Contact>{forms.contact}</Styled.Contact>
           </div>
           <div>
             <FontAwesomeIcon icon={faEnvelope} style={{ marginRight: "3px" }} />
-            <Styled.Link href="mailto:kr.suman2207@gmail.com">
-              kr.suman2207@gmail.com
+            <Styled.Link href={`mailto:${forms.email}`}>
+              {forms.email}
             </Styled.Link>
           </div>
         </div>
         <div>
           <div>
             <FontAwesomeIcon icon={faLinkedin} style={{ marginRight: "3px" }} />
-            <Styled.Link href="https://www.linkedin.com/in/suman-kr/">
-              linkedin/suman-kr
-            </Styled.Link>
+            <Styled.Link href={forms.linkedIn}>linkedin/suman-kr</Styled.Link>
           </div>
           <div>
             <FontAwesomeIcon icon={faGithub} style={{ marginRight: "3px" }} />
-            <Styled.Link href="https://www.github.com/suman-kr">
-              github/suman-kr
-            </Styled.Link>
+            <Styled.Link href={forms.github}>github/suman-kr</Styled.Link>
           </div>
           <div>
             <FontAwesomeIcon icon={faGlobe} style={{ marginRight: "3px" }} />
-            <Styled.Link href="https://suman-kr.github.io">
-              github.io/suman-kr
-            </Styled.Link>
+            <Styled.Link href={forms.website}>github.io/suman-kr</Styled.Link>
           </div>
         </div>
       </Styled.PersonalContact>
@@ -250,15 +248,19 @@ const Resume = () => {
           <Styled.EducationSubHeading>
             <Styled.EducationSection>
               <div>
-                <Styled.Title>CMR Institute of Technology</Styled.Title>,{" "}
+                <Styled.Title>{forms.instituteName}</Styled.Title>,{" "}
                 <Styled.LightText style={{ fontSize: "14px" }}>
                   Bangalore
                 </Styled.LightText>
               </div>
-              <div>2015 - 2019</div>
+              <div>
+                {forms.startYear} - {forms.endYear}
+              </div>
             </Styled.EducationSection>
           </Styled.EducationSubHeading>
-          <div>B.E. in Computer Science</div>
+          <div>
+            {forms.degree} in {forms.major}
+          </div>
         </div>
       </div>
       <Styled.HorizontalSeperator />
@@ -275,4 +277,15 @@ const Resume = () => {
   );
 };
 
-export default Resume;
+const mapStateToProps = (store: any) => {
+  const { forms } = store;
+  return {
+    forms,
+  };
+};
+
+const mapDispatchToProps = {
+  updateForms: FormActions.UpdateForms,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Resume);
