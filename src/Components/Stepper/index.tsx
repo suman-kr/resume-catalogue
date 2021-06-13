@@ -36,7 +36,6 @@ export class Stepper extends React.Component<Props, State> {
                   zIndex: 1,
                   cursor: "pointer",
                 }}
-                onClick={() => this.handleStepToggle(index + 1)}
               >
                 {index + 1}
               </div>

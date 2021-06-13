@@ -60,9 +60,6 @@ function Wizard(props: WizardInterface) {
 
   return (
     <>
-      <div
-        style={{ minHeight: "50px", width: "100%", background: "black" }}
-      ></div>
       <Container>
         <Stepper
           currentStep={currentStep}
@@ -72,6 +69,7 @@ function Wizard(props: WizardInterface) {
         />
         <Card className="wizard-card">
           <Formik
+            enableReinitialize
             initialValues={{ ...props.forms }}
             onSubmit={_handleSubmit}
             validationSchema={validationSchemas[currentStep - 1]}

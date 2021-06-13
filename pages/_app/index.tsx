@@ -4,15 +4,18 @@ import { PersistGate } from "redux-persist/integration/react";
 import React from "react";
 import { Provider } from "react-redux";
 import withRedux from "next-redux-wrapper";
+import { CookiesProvider } from "react-cookie";
 
 function MyApp(props: MyAppProps) {
   const { Component, pageProps } = props;
   return (
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <Component {...pageProps} />
-      </PersistGate>
-    </Provider>
+    <CookiesProvider>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <Component {...pageProps} />
+        </PersistGate>
+      </Provider>
+    </CookiesProvider>
   );
 }
 
