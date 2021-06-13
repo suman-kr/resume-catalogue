@@ -57,19 +57,26 @@ const Resume = (props: { forms: FormPayload }) => {
           </div>
         </div>
         <div>
-          <div>
-            <FontAwesomeIcon icon={faLinkedin} style={{ marginRight: "3px" }} />
-            <Styled.Link href={forms.linkedIn}>
-              linkedin/{_userNameParser(forms.linkedIn)}
-            </Styled.Link>
-          </div>
-          <div>
-            <FontAwesomeIcon icon={faGithub} style={{ marginRight: "3px" }} />
-            <Styled.Link href={forms.github}>
-              github/{_userNameParser(forms.github)}
-            </Styled.Link>
-          </div>
-          {forms.website !== "" && (
+          {forms.linkedIn && (
+            <div>
+              <FontAwesomeIcon
+                icon={faLinkedin}
+                style={{ marginRight: "3px" }}
+              />
+              <Styled.Link href={forms.linkedIn}>
+                linkedin/{_userNameParser(forms.linkedIn)}
+              </Styled.Link>
+            </div>
+          )}
+          {forms.github && (
+            <div>
+              <FontAwesomeIcon icon={faGithub} style={{ marginRight: "3px" }} />
+              <Styled.Link href={forms.github}>
+                github/{_userNameParser(forms.github)}
+              </Styled.Link>
+            </div>
+          )}
+          {forms.website && (
             <div>
               <FontAwesomeIcon icon={faGlobe} style={{ marginRight: "3px" }} />
               <Styled.Link href={forms.website}>
