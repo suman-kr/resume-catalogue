@@ -142,7 +142,7 @@ const Resume = (props: { forms: FormPayload }) => {
             </Styled.ProjectSection>
             <Styled.ExperienceDetailList>
               {project.projectDescription.split("\n").map((item) => (
-                <>{item}</>
+                <li>{item}</li>
               ))}
               {/* <Styled.LightText>Tech Stack</Styled.LightText>: ReactJS, Django,
               GraphQL */}
