@@ -26,7 +26,7 @@ export const Experience: React.FC<InitialProps> = (props) => {
                         <AddButton
                           onClick={(event) => {
                             event.preventDefault();
-                            arrayHelpers.push({
+                            arrayHelpers.insert(index, {
                               company: "",
                               title: "",
                               employmentType: "",

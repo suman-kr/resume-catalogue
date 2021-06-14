@@ -25,7 +25,10 @@ export const Skills: React.FC<InitialProps> = (props) => {
                       <AddButton
                         onClick={(event) => {
                           event.preventDefault();
-                          arrayHelpers.push({ skillName: "", expertise: "" });
+                          arrayHelpers.insert(index, {
+                            skillName: "",
+                            expertise: "",
+                          });
                         }}
                       />
                       {formik.values.skills.length > 1 && (

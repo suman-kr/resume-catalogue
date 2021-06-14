@@ -24,7 +24,7 @@ export const Projects: React.FC<InitialProps> = (props) => {
                       <AddButton
                         onClick={(event) => {
                           event.preventDefault();
-                          arrayHelpers.push({
+                          arrayHelpers.insert(index, {
                             projectName: "",
                             projectDescription: "",
                           });

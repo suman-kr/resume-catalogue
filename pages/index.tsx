@@ -15,7 +15,7 @@ const Main = (props: any) => {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const [loggedIn, setLoggedIn] = useState(false);
   useEffect(() => {
-    if (cookies.token) {
+    if (cookies.token && cookies.token !== undefined) {
       setLoggedIn(true);
     }
   }, []);
@@ -25,18 +25,19 @@ const Main = (props: any) => {
   ) => {
     res = (res as unknown) as GoogleLoginResponse;
     setCookie("token", res.tokenId);
-    setLoggedIn(true);
+
     fetch(
       `https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${res.tokenId}`
     )
       .then((res) => res.json())
-      .then((res) =>
+      .then((res) => {
+        setLoggedIn(true);
         props.updateForms({
           ...props.forms,
           fullName: res.name,
           email: res.email,
-        })
-      );
+        });
+      });
   };
   return (
     <>
@@ -45,21 +46,22 @@ const Main = (props: any) => {
       </Head>
       <NavBar user={props.forms.fullName} />
 
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        {loggedIn ? (
-          <StepWizard {...props} key={props.forms} />
-        ) : (
-          <div style={{ marginTop: "5em" }}>
-            <GoogleLogin
-              clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || ""}
-              buttonText="Log In with Google"
-              onSuccess={_handleSuccess}
-              onFailure={(err) => console.error(err)}
-              cookiePolicy={"single_host_origin"}
-            />
-          </div>
-        )}
-      </div>
+      {/* <div style={{ display: "flex", justifyContent: "center" }}> */}
+      {loggedIn ? (
+        <StepWizard {...props} key={props.forms} />
+      ) : (
+        <div style={{ marginTop: "5em" }}>
+          <GoogleLogin
+            clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || ""}
+            buttonText="Log In with Google"
+            onSuccess={_handleSuccess}
+            onFailure={(err) => console.error(err)}
+            cookiePolicy={"single_host_origin"}
+            isSignedIn={true}
+          />
+        </div>
+      )}
+      {/* </div> */}
     </>
   );
 };
