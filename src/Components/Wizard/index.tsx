@@ -16,13 +16,7 @@ import { Formik, FormikProps, Form } from "formik";
 import { validationSchemas } from "../Forms/validationSchemas";
 import { useRouter } from "next/router";
 
-const {
-  Container,
-  Button,
-  ButtonContainer,
-  ImageContainer,
-  StepperStyled,
-} = Styled();
+const { Container, Button, ButtonContainer, ImageContainer } = Styled();
 
 function Wizard(props: WizardInterface) {
   const steps = [
@@ -67,36 +61,30 @@ function Wizard(props: WizardInterface) {
   return (
     <>
       <Container>
-        {/* <Stepper
+        <Stepper
           currentStep={currentStep}
           steps={steps}
           key={currentStep}
           toggleStep={(step) => setCurrentStep(step)}
-        /> */}
-        <StepperStyled>
-          <ul>
-            {steps.map((step, ind) => (
-              <li>
-                <div
-                  style={{
-                    background: "black",
-                    color: "white",
-                    borderRadius: "50%",
-                    width: "25px",
-                    height: "25px",
-                    textAlign: "center",
-                    zIndex: 1,
-                    cursor: "pointer",
-                  }}
-                >
-                  {ind + 1}
-                </div>
-                {step}
-              </li>
-            ))}
-          </ul>
-        </StepperStyled>
+          vertical
+        />
+
         <div>
+          <ButtonContainer>
+            {currentStep > 1 && (
+              <Button
+                type="button"
+                disabled={currentStep === 1}
+                onClick={(event) => setCurrentStep(currentStep - 1)}
+                form="form"
+              >
+                Previous
+              </Button>
+            )}
+            <Button type="submit" form="form">
+              {isLastStep ? "Submit" : "Next"}
+            </Button>
+          </ButtonContainer>
           <Card className="wizard-card">
             <Formik
               enableReinitialize
@@ -111,23 +99,9 @@ function Wizard(props: WizardInterface) {
               )}
             </Formik>
           </Card>
-          <Card className="button-card">
-            <ButtonContainer>
-              {currentStep > 1 && (
-                <Button
-                  type="button"
-                  disabled={currentStep === 1}
-                  onClick={(event) => setCurrentStep(currentStep - 1)}
-                  form="form"
-                >
-                  Previous
-                </Button>
-              )}
-              <Button type="submit" form="form">
-                {isLastStep ? "Submit" : "Next"}
-              </Button>
-            </ButtonContainer>
-          </Card>
+          {/* <Card className="button-card">
+            
+          </Card> */}
         </div>
         <ImageContainer
           src={"/static/images/resume.svg"}
