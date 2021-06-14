@@ -72,17 +72,27 @@ export class Stepper extends React.Component<Props, State> {
             <ul>
               {this.props.steps.map((step, ind) => (
                 <li>
-                  <Row style={{ padding: "0.5em 1em", minWidth: "8em" }}>
+                  <Row
+                    style={{
+                      padding: "0.5em 1em",
+                      minWidth: "8em",
+                      boxShadow:
+                        this.state.step === ind + 1
+                          ? "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px"
+                          : "none",
+                    }}
+                  >
                     <div
                       style={{
                         background:
                           this.state.step === ind + 1 ? "black" : "gray",
                         color: "white",
                         borderRadius: "50%",
-                        width: "3em",
-                        height: "3em",
+                        width: this.state.step === ind + 1 ? "3.5em" : "3em",
+                        height: this.state.step === ind + 1 ? "3.5em" : "3em",
                         cursor: "pointer",
-                        marginRight: "1em",
+                        marginRight:
+                          this.state.step === ind + 1 ? "1.1em" : "1.5em",
                       }}
                     >
                       <div
@@ -90,7 +100,7 @@ export class Stepper extends React.Component<Props, State> {
                           display: "flex",
                           justifyContent: "center",
                           alignItems: "center",
-                          height: "3em",
+                          height: this.state.step === ind + 1 ? "3.5em" : "3em",
                         }}
                       >
                         {ind + 1}
