@@ -77,36 +77,41 @@ export class Stepper extends React.Component<Props, State> {
                 >
                   <Row
                     style={{
-                      padding: "0.5em 1em",
                       minWidth: "8em",
                       boxShadow:
                         this.state.step === ind + 1
                           ? "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px"
                           : "none",
                     }}
+                    className={this.state.step === ind + 1 ? "border" : ""}
                   >
-                    <div
-                      style={{
-                        background:
-                          this.state.step === ind + 1 ? "black" : "gray",
-                        color: "white",
-                        borderRadius: "50%",
-                        width: this.state.step === ind + 1 ? "3.5em" : "3em",
-                        height: this.state.step === ind + 1 ? "3.5em" : "3em",
-                        cursor: "pointer",
-                        marginRight:
-                          this.state.step === ind + 1 ? "1.1em" : "1.5em",
-                      }}
-                    >
+                    <div style={{ padding: "0.5em 1em" }}>
                       <div
                         style={{
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
+                          background:
+                            this.state.step === ind + 1 ? "black" : "gray",
+                          color: "white",
+                          borderRadius: "50%",
+                          width: this.state.step === ind + 1 ? "3.5em" : "3em",
                           height: this.state.step === ind + 1 ? "3.5em" : "3em",
+                          cursor: "pointer",
+                          marginRight:
+                            this.state.step === ind + 1 ? "0.5em" : "1em",
+                          marginLeft:
+                            this.state.step === ind + 1 ? "-5px" : "0px",
                         }}
                       >
-                        {ind + 1}
+                        <div
+                          style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            height:
+                              this.state.step === ind + 1 ? "3.5em" : "3em",
+                          }}
+                        >
+                          {ind + 1}
+                        </div>
                       </div>
                     </div>
                     <StepName currentStep={this.state.step === ind + 1}>
