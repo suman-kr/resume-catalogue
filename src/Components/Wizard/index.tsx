@@ -60,6 +60,19 @@ function Wizard(props: WizardInterface) {
 
   return (
     <>
+      {/* <ButtonContainer>
+        {currentStep > 1 && (
+          <Button
+            type="button"
+            disabled={currentStep === 1}
+            onClick={(event) => setCurrentStep(currentStep - 1)}
+            form="form"
+          >
+            Previous
+          </Button>
+        )}
+        
+      </ButtonContainer> */}
       <Container>
         <Stepper
           currentStep={currentStep}
@@ -70,21 +83,6 @@ function Wizard(props: WizardInterface) {
         />
 
         <div>
-          <ButtonContainer>
-            {currentStep > 1 && (
-              <Button
-                type="button"
-                disabled={currentStep === 1}
-                onClick={(event) => setCurrentStep(currentStep - 1)}
-                form="form"
-              >
-                Previous
-              </Button>
-            )}
-            <Button type="submit" form="form">
-              {isLastStep ? "Submit" : "Next"}
-            </Button>
-          </ButtonContainer>
           <Card className="wizard-card">
             <Formik
               enableReinitialize
@@ -98,11 +96,17 @@ function Wizard(props: WizardInterface) {
                 </Form>
               )}
             </Formik>
+            <div>
+              <Button type="submit" form="form">
+                {isLastStep ? "Submit" : "Save & Continue"}
+              </Button>
+            </div>
           </Card>
           {/* <Card className="button-card">
             
           </Card> */}
         </div>
+
         <ImageContainer
           src={"/static/images/resume.svg"}
           width={250}

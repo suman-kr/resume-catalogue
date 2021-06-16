@@ -1,89 +1,137 @@
-export const personalDetails = [
+interface FormFieldsInterface {
+  placeholder: string;
+  index: number;
+  name: string;
+  type: string;
+  label: string;
+}
+
+export const personalDetails: FormFieldsInterface[] = [
   {
-    placeholder: "Full Name",
+    placeholder: "Enter your name",
     type: "text",
     index: 1,
     name: "fullName",
+    label: "Your Name",
   },
   {
-    placeholder: "Email",
+    placeholder: "Enter email",
     type: "text",
     index: 2,
     name: "email",
+    label: "Email",
   },
   {
-    placeholder: "Phone Number",
+    placeholder: "Enter phone number",
     type: "text",
     index: 3,
     name: "contact",
+    label: "Phone Number",
   },
   {
-    placeholder: "Linkedin",
-    type: "text",
+    placeholder: "Enter date of birth",
     index: 4,
-    name: "linkedIn",
-  },
-  {
-    placeholder: "Github",
-    type: "text",
-    index: 5,
-    name: "github",
-  },
-  {
-    placeholder: "Portfolio/Website",
-    type: "text",
-    index: 6,
-    name: "website",
+    label: "Date of Birth",
+    name: "dob",
+    type: "date",
   },
 ];
 
-export const workExperience = [
+export const workExperience: FormFieldsInterface[] = [
   {
-    placeholder: "Company",
+    placeholder: "Enter company name",
     type: "text",
     index: 1,
     name: "company",
+    label: "Company Name",
   },
   {
-    placeholder: "Title",
+    placeholder: "Enter role/designation",
     type: "text",
     index: 2,
     name: "title",
+    label: "Role/Designation",
   },
   {
-    placeholder: "Employment Type",
+    placeholder: "Enter employment type",
     type: "text",
     index: 3,
     name: "employmentType",
+    label: "Employment Type",
   },
   {
-    placeholder: "Location",
+    placeholder: "Enter location",
     type: "text",
     index: 4,
     name: "location",
+    label: "Location",
   },
   {
-    placeholder: "Description",
+    placeholder: "Enter work description",
     type: "textarea",
     index: 5,
     name: "description",
+    label: "Work description",
   },
   {
-    placeholder: "Start Date",
+    placeholder: "Enter start date",
     type: "date",
     index: 6,
     name: "startDate",
+    label: "Start Date",
   },
-  { placeholder: "End Date", type: "date", index: 7, name: "endDate" },
+  {
+    placeholder: "Enter end date",
+    type: "date",
+    index: 7,
+    name: "endDate",
+    label: "End Date",
+  },
 ];
 
-export const education = [
-  { placeholder: "Institute Name", name: "instituteName", index: 1 },
-  { placeholder: "Degree", name: "degree", index: 2 },
-  { placeholder: "Major", name: "major", index: 3 },
-  { placeholder: "Start Year", name: "startYear", index: 4 },
-  { placeholder: "End Year", name: "endYear", index: 5 },
-  { placeholder: "Grade", name: "grade", index: 6 },
+export const education: FormFieldsInterface[] = [
+  {
+    placeholder: "Enter institute name",
+    name: "instituteName",
+    type: "text",
+    index: 1,
+    label: "Institute Name",
+  },
+  {
+    placeholder: "Enter degree",
+    name: "degree",
+    index: 2,
+    type: "text",
+    label: "Degree",
+  },
+  {
+    placeholder: "Enter major",
+    name: "major",
+    index: 3,
+    label: "Major",
+    type: "text",
+  },
+  {
+    placeholder: "Enter start year",
+    name: "startYear",
+    index: 4,
+    label: "Start Year",
+    type: "text",
+  },
+  {
+    placeholder: "Enter end year",
+    name: "endYear",
+    index: 5,
+    label: "End Year",
+    type: "text",
+  },
+  {
+    placeholder: "Enter grade",
+    name: "grade",
+    index: 6,
+    type: "text",
+    label: "Grade",
+  },
 ];
 
 export const skills = [
@@ -106,6 +154,27 @@ export const careerAchievements = [
     placeholder: "Achievement Description",
     name: "achievements",
     type: "textarea",
-    index: 1
+    index: 1,
+  },
+];
+
+export const socialAccounts = [
+  {
+    placeholder: "Linkedin",
+    type: "text",
+    index: 4,
+    name: "linkedIn",
+  },
+  {
+    placeholder: "Github",
+    type: "text",
+    index: 5,
+    name: "github",
+  },
+  {
+    placeholder: "Portfolio/Website",
+    type: "text",
+    index: 6,
+    name: "website",
   },
 ];

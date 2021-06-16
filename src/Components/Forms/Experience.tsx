@@ -1,6 +1,6 @@
 import { ErrorMessage, FieldArray } from "formik";
 import React from "react";
-import { Row, Col, FormControl, Button, Card } from "react-bootstrap";
+import { Row, Col, FormControl, Button, Card, Form } from "react-bootstrap";
 import { workExperience } from "../../constants/FormConst";
 import { AddButton } from "../Common/AddButton";
 import { RemoveButton } from "../Common/RemoveButton";
@@ -51,27 +51,35 @@ export const Experience: React.FC<InitialProps> = (props) => {
                       <Row>
                         {workExperience.map((field, id) => {
                           return (
-                            <Col md={6} style={{ margin: "10px 0px 10px 0px" }}>
-                              {field.type === "textarea" ? (
-                                <FormControl
-                                  placeholder={field.placeholder}
-                                  {...formik.getFieldProps(
-                                    `experience[${index}].${field.name}`
-                                  )}
-                                  as="textarea"
+                            <Col md={6} style={{ marginBottom: "1em" }}>
+                              <Form.Group
+                                controlId={`${field.name}-id`}
+                                style={{ marginBottom: "0" }}
+                              >
+                                <Form.Label>{field.label}</Form.Label>
+                                {field.type === "textarea" ? (
+                                  <FormControl
+                                    placeholder={field.placeholder}
+                                    {...formik.getFieldProps(
+                                      `experience[${index}].${field.name}`
+                                    )}
+                                    as="textarea"
+                                  />
+                                ) : (
+                                  <FormControl
+                                    placeholder={field.placeholder}
+                                    {...formik.getFieldProps(
+                                      `experience[${index}].${field.name}`
+                                    )}
+                                    type={field.type}
+                                  />
+                                )}
+                              </Form.Group>
+                              <div className="error">
+                                <ErrorMessage
+                                  name={`experience[${index}][${field.name}]`}
                                 />
-                              ) : (
-                                <FormControl
-                                  placeholder={field.placeholder}
-                                  {...formik.getFieldProps(
-                                    `experience[${index}].${field.name}`
-                                  )}
-                                  type={field.type}
-                                />
-                              )}
-                              <ErrorMessage
-                                name={`experience[${index}][${field.name}]`}
-                              />
+                              </div>
                             </Col>
                           );
                         })}

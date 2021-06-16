@@ -71,7 +71,10 @@ export class Stepper extends React.Component<Props, State> {
           <VerticalStepper>
             <ul>
               {this.props.steps.map((step, ind) => (
-                <li>
+                <li
+                  onClick={() => this.handleStepToggle(ind + 1)}
+                  style={{ cursor: "pointer" }}
+                >
                   <Row
                     style={{
                       padding: "0.5em 1em",
@@ -106,8 +109,9 @@ export class Stepper extends React.Component<Props, State> {
                         {ind + 1}
                       </div>
                     </div>
-                    {/* {this.stepIcon(ind + 1)} */}
-                    <StepName>{step}</StepName>
+                    <StepName currentStep={this.state.step === ind + 1}>
+                      {step}
+                    </StepName>
                   </Row>
                 </li>
               ))}

@@ -16,7 +16,18 @@ const Main = (props: any) => {
   const [loggedIn, setLoggedIn] = useState(false);
   useEffect(() => {
     if (cookies.token && cookies.token !== undefined) {
-      setLoggedIn(true);
+      fetch(
+        `https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${cookies.token}`
+      )
+        .then((res) => res.json())
+        .then((res) => {
+          setLoggedIn(true);
+          props.updateForms({
+            ...props.forms,
+            fullName: res.name,
+            email: res.email,
+          });
+        });
     }
   }, []);
 
@@ -58,6 +69,8 @@ const Main = (props: any) => {
             onFailure={(err) => console.error(err)}
             cookiePolicy={"single_host_origin"}
             isSignedIn={true}
+            prompt="consent"
+            responseType="code"
           />
         </div>
       )}

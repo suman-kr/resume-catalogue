@@ -4,10 +4,13 @@ export const validationSchemas = [
   Yup.object({
     fullName: Yup.string().required("Full Name is required"),
     email: Yup.string().email("Invalid Email").required("Email is required"),
-    contact: Yup.string().required("Contact is required"),
-    linkedIn: Yup.string(),
-    github: Yup.string(),
-    website: Yup.string(),
+    contact: Yup.string()
+      .required("Contact is required")
+      .matches(
+        /(\+\d{1,3}\s?)?((\(\d{3}\)\s?)|(\d{3})(\s|-?))(\d{3}(\s|-?))(\d{4})(\s?(([E|e]xt[:|.|]?)|x|X)(\s?\d+))?/g,
+        "Invalid phone number"
+      ),
+    dob: Yup.string(),
   }),
   Yup.object({
     instituteName: Yup.string().required("Institute name is required"),
