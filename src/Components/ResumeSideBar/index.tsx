@@ -12,12 +12,12 @@ export const ResumeSideBar: React.FC<any> = (props) => {
     setSideBar((prevValue: boolean) => {
       if (!prevValue) {
         {
-          document.getElementById("overlay").style.display = "block";
-          document.getElementById("mySidebar").style.width = "70%";
+          document.getElementById("overlay")!.style.display = "block";
+          document.getElementById("mySidebar")!.style.width = "70%";
         }
       } else {
-        document.getElementById("overlay").style.display = "none";
-        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("overlay")!.style.display = "none";
+        document.getElementById("mySidebar")!.style.width = "0";
       }
       return !prevValue;
     });
