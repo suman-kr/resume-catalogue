@@ -28,7 +28,11 @@ export const SideBarStyled = () => {
     }
   `;
 
+  const ViewText = styled.div`
+    transform: rotate(-90deg);
+  `;
   return {
     SideBar,
+    ViewText
   };
 };

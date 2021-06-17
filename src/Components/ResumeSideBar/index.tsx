@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { SideBarStyled } from "./styled";
 import { WizardStyled } from "../Wizard/styled";
-import Resume from "../../../pages/resume";
 import { SummerResume } from "../Resume/Layouts/Summer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLessThan } from "@fortawesome/free-solid-svg-icons";
 
-const { SideBar } = SideBarStyled();
+const { SideBar, ViewText } = SideBarStyled();
 const { Button } = WizardStyled();
 export const ResumeSideBar: React.FC<any> = (props) => {
   const [sideBar, setSideBar] = useState(false);
@@ -26,16 +27,17 @@ export const ResumeSideBar: React.FC<any> = (props) => {
   return (
     <>
       <Button
-        className="openbtn"
+        className="view-button"
         onClick={_handleSidebar}
         style={{
           position: "fixed",
           top: "50%",
           right: 0,
+          paddingLeft: 0,
+          paddingRight: 0,
         }}
-        id="view-sidebar"
       >
-        VIEW
+        <ViewText>VIEW</ViewText>
       </Button>
       <div id="overlay"></div>
       <SideBar>

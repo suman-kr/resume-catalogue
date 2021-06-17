@@ -74,6 +74,12 @@ textarea {
   border-radius: 0 !important;
 }
 
+.view-button:hover {
+  background-color: white;
+  color: black;
+  box-shadow: 0 0 0 0.2rem rgb(72, 70, 70) !important;
+}
+
 #overlay {
   position: fixed;
   top: 0;
