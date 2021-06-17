@@ -14,14 +14,21 @@ export function StepperStyled() {
       text-decoration: none;
     }
 
+    .border::before {
+      position: relative;
+      content: "";
+      background-color: black;
+      width: 5px;
+      position: relative;
+    }
   `;
 
-  const StepName = styled.div`
-    line-height: 2em;
-    font-size: 1.5em;
+  const StepName = styled.div<{ currentStep: boolean }>`
+    line-height: ${(props) => (props.currentStep ? "4em" : "3.5em")};
+    font-size: 1em;
 
     @media only screen and (max-width: 1600px) {
-      line-height: 2.5em;
+      line-height: ${(props) => (props.currentStep ? "4em" : "3.5em")};
       font-size: 1em;
     }
   `;

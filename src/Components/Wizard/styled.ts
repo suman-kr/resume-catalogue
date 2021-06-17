@@ -1,24 +1,25 @@
 import styled, { keyframes } from "styled-components";
 export function WizardStyled() {
   const Container = styled.div`
-    margin: 2em 1.5em 1em 0;
+    margin-left: 5em;
     display: grid;
-    grid-template-columns: 17% 83%;
+    grid-template-columns: 22% 60%;
     font-family: "Lato", sans-serif;
 
-    @media only screen and (max-width: 800px) {
-      margin: 2em 0 0 0;
+    @media only screen and (max-width: 1000px) {
+      margin: 0;
+      grid-template-columns: 17% 83%;
     }
   `;
 
   const Button = styled.button`
     background: black;
-    height: 50px;
-    text-transform: uppercase;
     color: white;
     max-width: 24em;
     border: none;
     font-weight: 600;
+    float: right;
+    padding: 1em;
   `;
 
   const ButtonContainer = styled.div`

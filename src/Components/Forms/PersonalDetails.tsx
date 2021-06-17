@@ -13,12 +13,19 @@ export const PersonalDetails: React.FC<InitialProps> = (props) => {
         <Row>
           {personalDetails.map((field) => {
             return (
-              <Col md={12} style={{ margin: "10px 0px 10px 0px" }}>
-                <FormControl
-                  placeholder={field.placeholder}
-                  aria-label={field.placeholder}
-                  {...props.formik.getFieldProps(field.name)}
-                />
+              <Col md={12} style={{ marginBottom: "1em" }}>
+                <Form.Group
+                  controlId={`${field.name}-id`}
+                  style={{ marginBottom: "0" }}
+                >
+                  <Form.Label>{field.label}</Form.Label>
+                  <FormControl
+                    placeholder={field.placeholder}
+                    {...props.formik.getFieldProps(field.name)}
+                    type={field.type}
+                  />
+                </Form.Group>
+
                 {(props.formik.errors as any)[field.name] &&
                 (props.formik.touched as any)[field.name] ? (
                   <div className="error">
