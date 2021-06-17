@@ -23,18 +23,21 @@ export const SummerResume = (props: { forms: FormPayload }) => {
     startDate: string,
     endDate: string
   ) => {
-    const _startDate = new Date(startDate);
-    const _startMonth = Month[_startDate.getMonth()].abbreviation;
-    const _startYear = _startDate.getFullYear();
-    let formattedDate = `${_startMonth} ${_startYear} - `;
-    if (endDate === "") formattedDate += "Present";
-    else {
-      const _endDate = new Date(endDate);
-      const _endMonth = Month[_endDate.getMonth()].abbreviation;
-      const _endYear = _endDate.getFullYear();
-      formattedDate += `${_endMonth} ${_endYear}`;
+    if (startDate !== "") {
+      const _startDate = new Date(startDate);
+      const _startMonth = Month[_startDate.getMonth()].abbreviation;
+      const _startYear = _startDate.getFullYear();
+      let formattedDate = `${_startMonth} ${_startYear} - `;
+      if (endDate === "") formattedDate += "Present";
+      else {
+        const _endDate = new Date(endDate);
+        const _endMonth = Month[_endDate.getMonth()].abbreviation;
+        const _endYear = _endDate.getFullYear();
+        formattedDate += `${_endMonth} ${_endYear}`;
+      }
+      return formattedDate;
     }
-    return formattedDate;
+    return "MMM YYYY - MMM  YYYY";
   };
 
   return (
