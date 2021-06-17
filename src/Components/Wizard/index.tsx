@@ -58,39 +58,10 @@ function Wizard(props: WizardInterface) {
     }
   };
 
-  const _handleSidebar = () => {
-    setSideBar((prevValue: boolean) => {
-      if (!prevValue) {
-        {
-          document.getElementById("overlay").style.display = "block";
-          document.getElementById("mySidebar").style.width = "70%";
-        }
-      } else {
-        document.getElementById("mySidebar").style.width = "0";
-      }
-      return !prevValue;
-    });
-
-    // document.getElementById("main").style.marginLeft = "250px";
-  };
-
   const isLastStep = currentStep === steps.length;
 
   return (
     <>
-      {/* <ButtonContainer>
-        {currentStep > 1 && (
-          <Button
-            type="button"
-            disabled={currentStep === 1}
-            onClick={(event) => setCurrentStep(currentStep - 1)}
-            form="form"
-          >
-            Previous
-          </Button>
-        )}
-        
-      </ButtonContainer> */}
       <Container>
         <Stepper
           currentStep={currentStep}
@@ -118,19 +89,6 @@ function Wizard(props: WizardInterface) {
             </Button>
           </div>
         </Card>
-        <Button
-          className="openbtn"
-          onClick={_handleSidebar}
-          style={{
-            position: "fixed",
-            top: "50%",
-            right: 0,
-            transition: "0.5s",
-          }}
-          id="view-sidebar"
-        >
-          VIEW
-        </Button>
         {<ResumeSideBar forms={props.forms} />}
         <ImageContainer
           src={"/static/images/resume.svg"}
