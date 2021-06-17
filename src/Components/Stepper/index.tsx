@@ -86,7 +86,7 @@ export class Stepper extends React.Component<Props, State> {
                     className={this.state.step === ind + 1 ? "border" : ""}
                   >
                     <div style={{ padding: "0.5em 1em" }}>
-                      <div
+                      {/* <div
                         style={{
                           background:
                             this.state.step === ind + 1 ? "black" : "gray",
@@ -112,7 +112,7 @@ export class Stepper extends React.Component<Props, State> {
                         >
                           {ind + 1}
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                     <StepName currentStep={this.state.step === ind + 1}>
                       {step}

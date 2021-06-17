@@ -15,6 +15,7 @@ import { WizardInterface } from "./interfaces";
 import { Formik, FormikProps, Form } from "formik";
 import { validationSchemas } from "../Forms/validationSchemas";
 import { useRouter } from "next/router";
+import { ResumeSideBar } from "../ResumeSideBar";
 
 const { Container, Button, ButtonContainer, ImageContainer } = Styled();
 
@@ -28,6 +29,7 @@ function Wizard(props: WizardInterface) {
     "Achievements",
   ];
   const [currentStep, setCurrentStep] = useState(1);
+  const [sideBar, setSideBar] = useState(false);
   const router = useRouter();
   const getForm = (step: number, formik: FormikProps<any>) => {
     switch (step) {
@@ -56,6 +58,22 @@ function Wizard(props: WizardInterface) {
     }
   };
 
+  const _handleSidebar = () => {
+    setSideBar((prevValue: boolean) => {
+      if (!prevValue) {
+        {
+          document.getElementById("overlay").style.display = "block";
+          document.getElementById("mySidebar").style.width = "70%";
+        }
+      } else {
+        document.getElementById("mySidebar").style.width = "0";
+      }
+      return !prevValue;
+    });
+
+    // document.getElementById("main").style.marginLeft = "250px";
+  };
+
   const isLastStep = currentStep === steps.length;
 
   return (
@@ -81,32 +99,39 @@ function Wizard(props: WizardInterface) {
           toggleStep={(step) => setCurrentStep(step)}
           vertical
         />
-
-        <div>
-          <Card className="wizard-card">
-            <Formik
-              enableReinitialize
-              initialValues={{ ...props.forms }}
-              onSubmit={_handleSubmit}
-              validationSchema={validationSchemas[currentStep - 1]}
-            >
-              {(formik) => (
-                <Form onSubmit={formik.handleSubmit} id="form">
-                  {getForm(currentStep, formik)}
-                </Form>
-              )}
-            </Formik>
-            <div>
-              <Button type="submit" form="form">
-                {isLastStep ? "Submit" : "Save & Continue"}
-              </Button>
-            </div>
-          </Card>
-          {/* <Card className="button-card">
-            
-          </Card> */}
-        </div>
-
+        <Card className="wizard-card">
+          <Formik
+            enableReinitialize
+            initialValues={{ ...props.forms }}
+            onSubmit={_handleSubmit}
+            validationSchema={validationSchemas[currentStep - 1]}
+          >
+            {(formik) => (
+              <Form onSubmit={formik.handleSubmit} id="form">
+                {getForm(currentStep, formik)}
+              </Form>
+            )}
+          </Formik>
+          <div>
+            <Button type="submit" form="form">
+              {isLastStep ? "Submit" : "Save & Continue"}
+            </Button>
+          </div>
+        </Card>
+        <Button
+          className="openbtn"
+          onClick={_handleSidebar}
+          style={{
+            position: "fixed",
+            top: "50%",
+            right: 0,
+            transition: "0.5s",
+          }}
+          id="view-sidebar"
+        >
+          VIEW
+        </Button>
+        {<ResumeSideBar forms={props.forms} />}
         <ImageContainer
           src={"/static/images/resume.svg"}
           width={250}
