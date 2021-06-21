@@ -13,7 +13,7 @@ import { FormActions } from "../src/Redux/Actions/FormActions";
 
 const Main = (props: any) => {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
   useEffect(() => {
     if (cookies.token && cookies.token !== undefined) {
       fetch(

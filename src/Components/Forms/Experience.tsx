@@ -1,5 +1,5 @@
 import { ErrorMessage, FieldArray } from "formik";
-import React from "react";
+import React, { useState } from "react";
 import { Row, Col, FormControl, Button, Card, Form } from "react-bootstrap";
 import { workExperience } from "../../constants/FormConst";
 import { AddButton } from "../Common/AddButton";
@@ -11,6 +11,8 @@ const { FadeIn, FormContainer } = FormsStyled();
 
 export const Experience: React.FC<InitialProps> = (props) => {
   const { formik } = props;
+  const [checked, setChecked] = useState(false);
+  console.log(checked);
   return (
     <FadeIn>
       <FieldArray
@@ -51,12 +53,15 @@ export const Experience: React.FC<InitialProps> = (props) => {
                       <Row>
                         {workExperience.map((field, id) => {
                           return (
-                            <Col md={6} style={{ marginBottom: "1em" }}>
+                            <Col md={field.md} style={{ marginBottom: "1em" }}>
                               <Form.Group
                                 controlId={`${field.name}-id`}
                                 style={{ marginBottom: "0" }}
                               >
-                                <Form.Label>{field.label}</Form.Label>
+                                
+                                {checked && field.label === "End Date" ? <Form.Label>Present Company</Form.Label> :
+                                  <Form.Label>{field.label}</Form.Label>
+                                }
                                 {field.type === "textarea" ? (
                                   <FormControl
                                     placeholder={field.placeholder}
@@ -65,15 +70,25 @@ export const Experience: React.FC<InitialProps> = (props) => {
                                     )}
                                     as="textarea"
                                   />
-                                ) : (
-                                  <FormControl
+                                ) : [
+                                  field.type === "checkbox" ? (<FormControl placeholder={field.placeholder}
+                                    {
+                                      ...formik.getFieldProps(`experience[${index}].${field.name}`)
+                                    }
+                                    type={field.type}
+                                    onClick={() => setChecked(!checked)}
+                                  />):
+                                  [ checked && field.name === "endDate" ? <></>:
+                                    (<FormControl
                                     placeholder={field.placeholder}
                                     {...formik.getFieldProps(
                                       `experience[${index}].${field.name}`
                                     )}
                                     type={field.type}
-                                  />
-                                )}
+                                  />)
+                                  ]
+                                ]
+                              }
                               </Form.Group>
                               <div className="error">
                                 <ErrorMessage

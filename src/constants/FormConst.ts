@@ -1,9 +1,10 @@
 interface FormFieldsInterface {
-  placeholder: string;
+  placeholder?: string;
   index: number;
   name: string;
   type: string;
   label: string;
+  md?:number;
 }
 
 export const personalDetails: FormFieldsInterface[] = [
@@ -44,6 +45,7 @@ export const workExperience: FormFieldsInterface[] = [
     index: 1,
     name: "company",
     label: "Company Name",
+    md:6
   },
   {
     placeholder: "Enter role/designation",
@@ -51,6 +53,7 @@ export const workExperience: FormFieldsInterface[] = [
     index: 2,
     name: "title",
     label: "Role/Designation",
+    md:6
   },
   {
     placeholder: "Enter employment type",
@@ -58,6 +61,7 @@ export const workExperience: FormFieldsInterface[] = [
     index: 3,
     name: "employmentType",
     label: "Employment Type",
+    md:6
   },
   {
     placeholder: "Enter location",
@@ -65,6 +69,7 @@ export const workExperience: FormFieldsInterface[] = [
     index: 4,
     name: "location",
     label: "Location",
+    md:6
   },
   {
     placeholder: "Enter work description",
@@ -72,6 +77,7 @@ export const workExperience: FormFieldsInterface[] = [
     index: 5,
     name: "description",
     label: "Work description",
+    md:12
   },
   {
     placeholder: "Enter start date",
@@ -79,6 +85,7 @@ export const workExperience: FormFieldsInterface[] = [
     index: 6,
     name: "startDate",
     label: "Start Date",
+    md:6
   },
   {
     placeholder: "Enter end date",
@@ -86,7 +93,15 @@ export const workExperience: FormFieldsInterface[] = [
     index: 7,
     name: "endDate",
     label: "End Date",
+    md:6
   },
+  {
+    type:"checkbox",
+    label:"Presently working here",
+    index:8,
+    name:'currentJob',
+    md:6
+  }
 ];
 
 export const education: FormFieldsInterface[] = [
@@ -134,9 +149,9 @@ export const education: FormFieldsInterface[] = [
   },
 ];
 
-export const skills = [
-  { placeholder: "Name", name: "skillName", index: 1 },
-  { placeholder: "Expertise", name: "expertise", index: 2 },
+export const skills: FormFieldsInterface[] = [
+  { placeholder: "Name", name: "skillName", index: 1, label: 'Skill Name', type:'text' },
+  { placeholder: "Enter Level", name: "expertise", index: 2, label: 'Level', type:'text' },
 ];
 
 export const projects = [
