@@ -26,6 +26,7 @@ export function ResumeStyled(): ResumeStyledProps {
   const Title = styled.span`
     font-size: 16px;
     font-weight: 500;
+    color: black;
   `;
   const SubHeading = styled.h3`
     font-size: 20px;

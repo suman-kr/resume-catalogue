@@ -7,6 +7,8 @@ import { ResumeStyled } from "../styled";
 import Head from "next/head";
 import { Month } from "../../../data/month";
 import { FormPayload } from "../../../Redux/Reducers/FormDetails";
+import { Button } from "react-bootstrap";
+import { generatePdf } from "../helpers";
 
 const Styled = ResumeStyled();
 export const SummerResume = (props: { forms: FormPayload }) => {
@@ -41,97 +43,114 @@ export const SummerResume = (props: { forms: FormPayload }) => {
   };
 
   return (
-    <div className="resume-container">
+    <>
       <Head>Resume</Head>
-      <Styled.Heading>{forms.fullName}</Styled.Heading>
-      <Styled.PersonalContact>
-        <div>
-          <div>
-            <FontAwesomeIcon icon={faPhone} style={{ marginRight: "3px" }} />
-            <Styled.Contact>{forms.contact}</Styled.Contact>
-          </div>
-          <div>
-            <FontAwesomeIcon icon={faEnvelope} style={{ marginRight: "3px" }} />
-            <Styled.Link href={`mailto:${forms.email}`}>
-              {forms.email}
-            </Styled.Link>
-          </div>
-        </div>
-        <div>
-          {forms.linkedIn && (
+      <div onClick={generatePdf} style={{ cursor: "pointer" }} title="Save">
+        <img src={"/static/images/save.png"} width={35} height={35} />
+      </div>
+      {/* <div id="resume"> */}
+        <div id="resume-container">
+          <Styled.Heading>{forms.fullName}</Styled.Heading>
+          <Styled.PersonalContact>
             <div>
-              <FontAwesomeIcon
-                icon={faLinkedin}
-                style={{ marginRight: "3px" }}
-              />
-              <Styled.Link href={forms.linkedIn}>
-                linkedin/{_userNameParser(forms.linkedIn)}
-              </Styled.Link>
+              <div>
+                <FontAwesomeIcon
+                  icon={faPhone}
+                  style={{ marginRight: "3px" }}
+                />
+                <Styled.Contact>{forms.contact}</Styled.Contact>
+              </div>
+              <div>
+                <FontAwesomeIcon
+                  icon={faEnvelope}
+                  style={{ marginRight: "3px" }}
+                />
+                <Styled.Link href={`mailto:${forms.email}`}>
+                  {forms.email}
+                </Styled.Link>
+              </div>
             </div>
-          )}
-          {forms.github && (
             <div>
-              <FontAwesomeIcon icon={faGithub} style={{ marginRight: "3px" }} />
-              <Styled.Link href={forms.github}>
-                github/{_userNameParser(forms.github)}
-              </Styled.Link>
+              {forms.linkedIn && (
+                <div>
+                  <FontAwesomeIcon
+                    icon={faLinkedin}
+                    style={{ marginRight: "3px" }}
+                  />
+                  <Styled.Link href={forms.linkedIn}>
+                    linkedin/{_userNameParser(forms.linkedIn)}
+                  </Styled.Link>
+                </div>
+              )}
+              {forms.github && (
+                <div>
+                  <FontAwesomeIcon
+                    icon={faGithub}
+                    style={{ marginRight: "3px" }}
+                  />
+                  <Styled.Link href={forms.github}>
+                    github/{_userNameParser(forms.github)}
+                  </Styled.Link>
+                </div>
+              )}
+              {forms.website && (
+                <div>
+                  <FontAwesomeIcon
+                    icon={faGlobe}
+                    style={{ marginRight: "3px" }}
+                  />
+                  <Styled.Link href={forms.website}>
+                    github.io/{_userNameParser(forms.website)}
+                  </Styled.Link>
+                </div>
+              )}
             </div>
-          )}
-          {forms.website && (
-            <div>
-              <FontAwesomeIcon icon={faGlobe} style={{ marginRight: "3px" }} />
-              <Styled.Link href={forms.website}>
-                github.io/{_userNameParser(forms.website)}
-              </Styled.Link>
-            </div>
-          )}
-        </div>
-      </Styled.PersonalContact>
+          </Styled.PersonalContact>
 
-      <Styled.HeadingHorizontalSeperator />
-      <div className="experience-container">
-        <Styled.SubHeading>Experience</Styled.SubHeading>
-        {forms.experience.map((experinence) => (
-          <>
-            <Styled.ExperienceSection>
-              <Styled.ExperienceSubHeading>
-                <Styled.Title>{experinence.company}</Styled.Title>,{" "}
-                {experinence.title}
-              </Styled.ExperienceSubHeading>
-              <Styled.ExperienceSubHeading>
-                {_formatDateForExperienceSection(
-                  experinence.startDate,
-                  experinence.endDate
-                )}
-              </Styled.ExperienceSubHeading>
-            </Styled.ExperienceSection>
-            <Styled.Subtitle>{experinence.location}</Styled.Subtitle>
-            <Styled.ExperienceDetailList>
-              {experinence.description.split("\n").map((item) => (
-                <li>{item}</li>
+          <Styled.HeadingHorizontalSeperator />
+          <div className="experience-container">
+            <Styled.SubHeading>Experience</Styled.SubHeading>
+            {forms.experience.map((experinence) => (
+              <>
+                <Styled.ExperienceSection>
+                  <Styled.ExperienceSubHeading>
+                    <Styled.Title>{experinence.company}</Styled.Title>,{" "}
+                    {experinence.title}
+                  </Styled.ExperienceSubHeading>
+                  <Styled.ExperienceSubHeading>
+                    {_formatDateForExperienceSection(
+                      experinence.startDate,
+                      experinence.endDate
+                    )}
+                  </Styled.ExperienceSubHeading>
+                </Styled.ExperienceSection>
+                <Styled.Subtitle>{experinence.location}</Styled.Subtitle>
+                <Styled.ExperienceDetailList>
+                  {experinence.description.split("\n").map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </Styled.ExperienceDetailList>
+              </>
+            ))}
+          </div>
+          <Styled.HorizontalSeperator />
+          <div className="skills">
+            <Styled.SubHeading>Skills</Styled.SubHeading>
+            <Styled.SkillList>
+              {forms.skills.map((skill) => (
+                <Styled.Skill>{skill.skillName}</Styled.Skill>
               ))}
-            </Styled.ExperienceDetailList>
-          </>
-        ))}
-      </div>
-      <Styled.HorizontalSeperator />
-      <div className="skills">
-        <Styled.SubHeading>Skills</Styled.SubHeading>
-        <Styled.SkillList>
-          {forms.skills.map((skill) => (
-            <Styled.Skill>{skill.skillName}</Styled.Skill>
-          ))}
-        </Styled.SkillList>
-      </div>
-      <Styled.HorizontalSeperator />
-      <div className="projects-container">
-        <Styled.SubHeading>Personal Projects</Styled.SubHeading>
+            </Styled.SkillList>
+          </div>
+          <Styled.HorizontalSeperator />
+          <div className="projects-container">
+            <Styled.SubHeading>Personal Projects</Styled.SubHeading>
 
-        {forms.projects.map((project) => (
-          <>
-            <Styled.ProjectSection>
-              <Styled.Title>{project.projectName}</Styled.Title>
-              {/* <div>
+            {forms.projects.map((project) => (
+              <>
+                <Styled.ProjectSection>
+                  <Styled.Title>{project.projectName}</Styled.Title>
+                  {/* <div>
                 <Styled.Link href="https://github.com/suman-kr/remarques">
                   Github
                 </Styled.Link>
@@ -140,52 +159,56 @@ export const SummerResume = (props: { forms: FormPayload }) => {
                   Website
                 </Styled.Link>
               </div> */}
-            </Styled.ProjectSection>
-            <Styled.ExperienceDetailList>
-              {project.projectDescription.split("\n").map((item) => (
-                <li>{item}</li>
-              ))}
-              {/* <Styled.LightText>Tech Stack</Styled.LightText>: ReactJS, Django,
+                </Styled.ProjectSection>
+                <Styled.ExperienceDetailList>
+                  {project.projectDescription.split("\n").map((item) => (
+                    <li>{item}</li>
+                  ))}
+                  {/* <Styled.LightText>Tech Stack</Styled.LightText>: ReactJS, Django,
               GraphQL */}
-            </Styled.ExperienceDetailList>
-          </>
-        ))}
-      </div>
-      <Styled.HorizontalSeperator />
-      <div className="education-container">
-        <Styled.SubHeading>Education</Styled.SubHeading>
-        <div className="education">
-          <Styled.EducationSubHeading>
-            <Styled.EducationSection>
-              <div>
-                <Styled.Title>{forms.instituteName}</Styled.Title>,{" "}
-                <Styled.LightText style={{ fontSize: "14px" }}>
-                  Bangalore
-                </Styled.LightText>
-              </div>
-              <div>
-                {forms.startYear} - {forms.endYear}
-              </div>
-            </Styled.EducationSection>
-          </Styled.EducationSubHeading>
-          <div>
-            {forms.degree} in {forms.major}
+                </Styled.ExperienceDetailList>
+              </>
+            ))}
           </div>
-        </div>
-      </div>
-      {forms.achievements && (
-        <>
           <Styled.HorizontalSeperator />
-          <div className="achievement-container">
-            <Styled.SubHeading>Achievements / Participations</Styled.SubHeading>
-            <Styled.ExperienceDetailList>
-              {forms.achievements.split("\n").map((item) => (
-                <li>{item}</li>
-              ))}
-            </Styled.ExperienceDetailList>
+          <div className="education-container">
+            <Styled.SubHeading>Education</Styled.SubHeading>
+            <div className="education">
+              <Styled.EducationSubHeading>
+                <Styled.EducationSection>
+                  <div>
+                    <Styled.Title>{forms.instituteName}</Styled.Title>,{" "}
+                    <Styled.LightText style={{ fontSize: "14px" }}>
+                      Bangalore
+                    </Styled.LightText>
+                  </div>
+                  <div>
+                    {forms.startYear} - {forms.endYear}
+                  </div>
+                </Styled.EducationSection>
+              </Styled.EducationSubHeading>
+              <div>
+                {forms.degree} in {forms.major}
+              </div>
+            </div>
           </div>
-        </>
-      )}
-    </div>
+          {forms.achievements && (
+            <>
+              <Styled.HorizontalSeperator />
+              <div className="achievement-container">
+                <Styled.SubHeading>
+                  Achievements / Participations
+                </Styled.SubHeading>
+                <Styled.ExperienceDetailList>
+                  {forms.achievements.split("\n").map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </Styled.ExperienceDetailList>
+              </div>
+            </>
+          )}
+        </div>
+      {/* </div> */}
+    </>
   );
 };

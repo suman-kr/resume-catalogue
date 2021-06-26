@@ -5,11 +5,19 @@
 body {
   font-family: "Roboto", sans-serif;
   margin: 0;
+  background: #d3d3d3;
 }
 
-.resume-container {
+#resume-container {
   padding: 0 3rem 0 3rem;
   background-color: white;
+  width: 794px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+
 }
 
 @media only screen and (max-width: 800px) {
