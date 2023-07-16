@@ -37,7 +37,6 @@ export default function Resume() {
   const SkillList = styled.ul`
     display: flex;
     margin: 4px 0 0 0;
-    justify-content: space-between;
     flex-wrap: wrap;
   `;
 
@@ -126,129 +125,109 @@ export default function Resume() {
       </PersonalContact>
 
       <HeadingHorizontalSeperator />
+      <p style={{ textDecoration: "underline", margin: 0, marginBottom: 5, textUnderlineOffset: 3, letterSpacing: 0.5 }}>
+      Skilled Software Developer with nearly 4 years of hands-on experience
+      </p>
+
       <div className="experience-container">
         <SubHeading>Experience</SubHeading>
         <ExperienceSection>
           <ExperienceSubHeading>
-            <Title>I-STEM</Title>, Software Engineer
+            <Title>Scripbox</Title>, Software Engineer
           </ExperienceSubHeading>
-          <ExperienceSubHeading>Oct 2020 - Present</ExperienceSubHeading>
+          <ExperienceSubHeading>Jan 2022 - Present</ExperienceSubHeading>
         </ExperienceSection>
         <Subtitle>Bangalore</Subtitle>
         <ExperienceDetailList>
           <li>
-            Contributed to the development of I-Stem portal for responsive and
-            accessible UI, resilient and robust backend.
-          </li>
-          <li>
-            Implemented caching logic for AFC requests on AWS S3 bucket and
-            added cron sweep for failing requests.
-          </li>
-          <li>
-            Responsible for API design and development of RESTFUL services for
-            the product.
-          </li>
-          <li>
-            Developed University flow for onboarding of students and staffs to
-            the portal.
-          </li>
-          <li>
-            Designed and developed Admin flow for managing user/organization
-            requests.
+            Template 1
           </li>
 
           <li>
-            Managed role based authorization of users on portal through JWT and
-            casl.
+          Template 1
+          </li>
+
+          <li>
+          Template 1
           </li>
           <li>
-            Perform Unit Testing and API Testing with code coverage of more than
-            60%
+          Template 1
+          </li>
+
+          
+
+          <li>
+          Template 1
+          </li>
+          <li>
+          Template 1
+          </li>
+
+          
+        </ExperienceDetailList>
+        <ExperienceSection style={{marginTop: 2}}>
+          <ExperienceSubHeading>
+            <Title>Kreditbee</Title>, Software Engineer
+          </ExperienceSubHeading>
+          <ExperienceSubHeading>Jun 2021 - Dec 2021</ExperienceSubHeading>
+        </ExperienceSection>
+        <Subtitle>Bangalore</Subtitle>
+        <ExperienceDetailList>
+          <li>
+            Added an UI component in Admin Panel to manage the PG configuration
+            data stored in the database for easier access and control
+          </li>
+          <li>
+            Worked on Loan Application generation PDF using HTML template in
+            Golang and wkhtmltopdf.
           </li>
         </ExperienceDetailList>
-        <div className="experience">
-          <ExperienceSection>
-            <ExperienceSubHeading>
-              <Title>SCRIPT IT SOLUTION</Title>, Full Stack Engineer
-            </ExperienceSubHeading>
-            <ExperienceSubHeading>Jan 2020 - Oct 2020</ExperienceSubHeading>
-          </ExperienceSection>
-          <Subtitle>Bangalore</Subtitle>
-          <ExperienceDetailList>
-            <li>
-              Worked on multiple webapp projects using React.js, Django and
-              Rust.
-            </li>
-            <li>
-              Worked on developement and integration of REST API and GraphQL API
-            </li>
-            <li>Worked on deployment using Docker and CI/CD</li>
-            <li>
-              Projects:
-              <ul>
-                <li>
-                  <b>Nidhi</b>: Built a web based CRM to manage customer loans
-                  for the client.
-                </li>
-              </ul>
-            </li>
-          </ExperienceDetailList>
-        </div>
-        <div className="experience">
-          <ExperienceSection>
-            <ExperienceSubHeading>
-              <Title>SALESKEN</Title>, Trainee Software Engineer
-            </ExperienceSubHeading>
-            <ExperienceSubHeading>Aug 2019 - Jan 2020</ExperienceSubHeading>
-          </ExperienceSection>
-          <Subtitle>Bangalore</Subtitle>
-          <ExperienceDetailList>
-            <li>Worked on core Java for backend development</li>
-            <li>Worked on REST services and API testing</li>
-            <li>Worked with Bootstrap and HTML/CSS for UI development</li>
-          </ExperienceDetailList>
-        </div>
+
+        <ExperienceSection style={{marginTop: 2}}>
+          <ExperienceSubHeading>
+            <Title>I-STEM</Title>, Software Engineer
+          </ExperienceSubHeading>
+          <ExperienceSubHeading>Oct 2020 - Jun 2021</ExperienceSubHeading>
+        </ExperienceSection>
+        <Subtitle>Bangalore</Subtitle>
+        <ExperienceDetailList>
+          <li>
+          Template 1
+          </li>
+          <li>
+          Template 1
+          </li>
+          <li>
+          Template 1
+          </li>
+          <li>
+          Template 1
+          </li>
+        </ExperienceDetailList>
       </div>
       <HorizontalSeperator />
       <div className="skills">
         <SubHeading>Skills</SubHeading>
         <SkillList>
           <Skill>ReactJS</Skill>
-          <Skill>NodeJS</Skill>
-          <Skill>NextJS</Skill>
-          <Skill>Python</Skill>
+          <Skill>React-Native</Skill>
+          <Skill>Javascript</Skill>
           <Skill>Typescript</Skill>
+          <Skill>Redux</Skill>
+          <Skill>Jest</Skill>
+          <Skill>RTL</Skill>
+          <Skill>Webpack</Skill>
+          <Skill>NextJS</Skill>
           <Skill>REST API</Skill>
+          <Skill>NodeJS</Skill>
           <Skill>GraphQL</Skill>
-          <Skill>Django</Skill>
-          <Skill>Java</Skill>
           <Skill>MongoDB</Skill>
           <Skill>MySQL</Skill>
         </SkillList>
       </div>
       <HorizontalSeperator />
       <div className="projects-container">
-        <SubHeading>Personal Projects</SubHeading>
-        <div className="projects">
-          <ProjectSection>
-            <Title>REMARQUES</Title>
-            <div>
-              <Link href="https://github.com/suman-kr/remarques">Github</Link>
-              <VerticalSeperator />
-              <Link href="https://suman-kr.github.io/remarques/">Website</Link>
-            </div>
-          </ProjectSection>
-          <ExperienceDetailList>
-            <li>A notepad app to save multiple notes on the fly.</li>
-            <li>
-              It supports personalized URL and also have random URL generation
-              by default.
-            </li>
-            <li>
-              <LightText>Tech Stack</LightText>: React.JS, Django, GraphQL
-            </li>
-          </ExperienceDetailList>
-        </div>
+        <SubHeading>Open source Projects</SubHeading>
         <div className="projects">
           <ProjectSection>
             <Title>QUOTERS</Title>{" "}
@@ -256,35 +235,20 @@ export default function Resume() {
               <Link href="https://github.com/suman-kr/quoters">Github</Link>
               <VerticalSeperator />
               <Link href="https://pypi.org/project/quoters/">PyPi</Link>
+              <VerticalSeperator />
+              <Link href="https://www.npmjs.com/package/quoters">NPM</Link>
             </div>
           </ProjectSection>
 
           <ExperienceDetailList>
             <li>
-              Built a random quotes generator which scrapes data from multiple
-              websites and offers multiple quote genres.
+              Developed a data scraping package that extracts quotes from
+              various websites, providing multiple quote categories. It can be
+              seamlessly integrated into both Python and Node projects and
+              offers the flexibility of being configured as a CLI command for
+              Linux.
             </li>
-            <li>
-              It is deployed on PyPi and have also exposed a public API which
-              consumes the package.
-            </li>
-            <li>
-              <LightText>Tech Stack</LightText>: Python, FastAPI
-            </li>
-          </ExperienceDetailList>
-        </div>
-        <div className="projects">
-          <ProjectSection>
-            <Title>VISITOR MANAGEMENT SYSTEM</Title>
-            <div>
-              <Link href="https://github.com/suman-kr/visitor-management-project">Github</Link>
-            </div>
-          </ProjectSection>
-          <ExperienceDetailList>
-            <li>A web app to facilitate visitor management for college.</li>
-            <li>
-              <LightText>Tech Stack</LightText>: PHP, HTML/CSS, Bootstrap, MySQL
-            </li>
+            <li>Reached an user base with over 180 dependents.</li>
           </ExperienceDetailList>
         </div>
       </div>
@@ -296,7 +260,7 @@ export default function Resume() {
             <EducationSection>
               <div>
                 <Title>CMR Institute of Technology</Title>,{" "}
-                <LightText style={{fontSize: "14px"}}>Bangalore</LightText>
+                <LightText style={{ fontSize: "14px" }}>Bangalore</LightText>
               </div>
               <div>2015 - 2019</div>
             </EducationSection>
@@ -304,15 +268,7 @@ export default function Resume() {
           <div>B.E. in Computer Science</div>
         </div>
       </div>
-      <HorizontalSeperator />
       <div className="achievement-container">
-        <SubHeading>Achievements / Participations</SubHeading>
-        <ExperienceDetailList>
-          <li>
-            Among Top 250 in Jio Code Gladiators - 2019 (<b>Semi-finalist</b>){" "}
-          </li>
-          <li>Secured 98 percentile in Coursera - Python for Everybody</li>
-        </ExperienceDetailList>
       </div>
     </div>
   );
