@@ -90,6 +90,12 @@ export default function Resume() {
     color: gray;
   `;
 
+  const ExperienceHeading = styled.span`
+    font-weight: 600;
+    color: #585858;
+    letter-spacing: 0.5px;
+  `
+
   return (
     <div>
       <Heading>Suman Kumar</Heading>
@@ -133,7 +139,7 @@ export default function Resume() {
         <SubHeading>Experience</SubHeading>
         <ExperienceSection>
           <ExperienceSubHeading>
-            <Title>Scripbox</Title>, Software Engineer
+            <Title>Scripbox</Title>, <ExperienceHeading>Software Engineer</ExperienceHeading>
           </ExperienceSubHeading>
           <ExperienceSubHeading>Jan 2022 - Present</ExperienceSubHeading>
         </ExperienceSection>
@@ -167,7 +173,7 @@ export default function Resume() {
         </ExperienceDetailList>
         <ExperienceSection style={{marginTop: 2}}>
           <ExperienceSubHeading>
-            <Title>Kreditbee</Title>, Software Engineer
+            <Title>Kreditbee</Title>, <ExperienceHeading>Software Engineer</ExperienceHeading>
           </ExperienceSubHeading>
           <ExperienceSubHeading>Jun 2021 - Dec 2021</ExperienceSubHeading>
         </ExperienceSection>
@@ -185,9 +191,30 @@ export default function Resume() {
 
         <ExperienceSection style={{marginTop: 2}}>
           <ExperienceSubHeading>
-            <Title>I-STEM</Title>, Software Engineer
+            <Title>Quotient Technology</Title>, <ExperienceHeading>Software Engineer</ExperienceHeading>
           </ExperienceSubHeading>
-          <ExperienceSubHeading>Oct 2020 - Jun 2021</ExperienceSubHeading>
+          <ExperienceSubHeading>Feb 2021 - Oct 2021</ExperienceSubHeading>
+        </ExperienceSection>
+        <Subtitle>Bangalore</Subtitle>
+        <ExperienceDetailList>
+          <li>
+          Template 1
+          </li>
+          <li>
+          Template 1
+          </li>
+          <li>
+          Template 1
+          </li>
+          <li>
+          Template 1
+          </li>
+        </ExperienceDetailList>
+        <ExperienceSection style={{marginTop: 2}}>
+          <ExperienceSubHeading>
+            <Title>Quotient Technology</Title>, <ExperienceHeading>Software Engineer Intern</ExperienceHeading>
+          </ExperienceSubHeading>
+          <ExperienceSubHeading>Feb 2020 - Feb 2021</ExperienceSubHeading>
         </ExperienceSection>
         <Subtitle>Bangalore</Subtitle>
         <ExperienceDetailList>
